@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'Cafe24ClassicType-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Cafe24ClassicType-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Chosunilbo_myungjo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PuradakGentleGothicR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChosunGs';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Shilla_CultureB-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/Shilla_CultureB-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+   display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    margin: 0;
+   /* z-index:99; */
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+
+}
+
+.image-container {
+    display: block;
+    text-align: left;
+
+}
+.line{
+    margin-top:10px;
+}
+.animated-text {
+     font-family: 'Shilla_CultureB-Bold';
+     color:white;
+     font-size:120px;
+     font-weight: 700;
+     margin: auto 20px;
+     margin-left:50px;
+     text-align: left;
+     line-height: 100px;
+     position: absolute;
+     transform: translate(-50%,-50%);
+     top: 40%; /* 부모 요소의 중앙에 위치하도록 */
+     left: 50%;
+     width:90%;
+}
+.viewMore{
+    width: 190px;
+    height: 60px;
+    border:1px solid rgb(153, 151, 151);
+
+    transform: translate(-50%,-50%);
+    top: 70%; /* 부모 요소의 중앙에 위치하도록 */
+    left: 13%;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 3s forwards; /* 3초 후에 fadeIn 애니메이션 시작 */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.viewMore:hover{
+    cursor: pointer;
+    background-color:white;
+    color:white;
+}
+
+.viewMore:hover a{
+    color:black;
+}
+.viewMore>a{
+    font-size: 20px;
+    font-family: 'S-CoreDream-3Light';
+    color:white;
+    text-decoration:none;
+    text-align: center;
+    justify-content: center;
+    width: 200px;
+    height: 70px;
+    line-height:60px;
+    margin-left:15px;
+}
+
+
+
+
+.animated-text .line {
+    display: block;
+}
+
+.animated-text span {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.subtext {
+font-family: 'Shilla_CultureB-Bold';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-left:50px;
+    opacity: 0;
+    transition: opacity 1s;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 59%; /* 부모 요소의 중앙에 위치하도록 */
+    left: 50%;
+    width:90%;
+    text-shadow: 5px 5px 5px #000;
+
+}

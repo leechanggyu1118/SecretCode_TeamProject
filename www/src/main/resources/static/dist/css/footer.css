@@ -1,0 +1,62 @@
+@charset "UTF-8";
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+.ft{
+background-color : black;
+
+}
+
+footer{
+     font-family:'S-CoreDream-3Light';
+     border: 1px solid black;
+     color : white;
+
+}
+
+#numid{
+color : blue;
+
+}
+#numid2{
+color : red;
+
+}
+#gray{
+color:gray;
+
+}
+.container>.box{
+ height : 400px;
+}
+
+.container>.box>.top{
+margin-top: 70px;
+font-size: 32px;
+
+
+}
+.container>.box>.top2{
+font-size : 12px;
+color: gray;
+margin-bottom:20px;
+
+}
+
+
+#icon{
+  float:right;
+}
+
+#selecttema{
+float:right;
+border-solid: 12px;
+
+
+
+}
+

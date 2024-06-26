@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/dist/css/adminRegister.css}">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <section class="themeRegister">
+            <div class="pageTitle">
+                <div class="container">
+                    <h1>테마 등록</h1>
+                </div>
+            </div>
+
+                <h3 class="themeTableTitle">테마 등록현황</h3>
+            <div class="listTheme">
+                <a class="themeListTag" th:href="@{/adminRegister/adminThemeList}">테마 상세리스트 보러가기</a>
+            </div>
+            <div class="themeTable">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>테마 번호</th>
+                        <th>테마 이름</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="theme : ${getThemeNum}">
+                        <tr>
+                            <td class="themeNumExist" th:text="${theme.themeNum}"></td>
+                            <td th:text="${theme.themeName}"></td>
+                        </tr>
+
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="themeRegisterForm">
+                <div class="container">
+                    <form action="/adminRegister/adminRegister" method="post" enctype="multipart/form-data">
+                        <div class="formGroup">
+                            <label for="themeNum">테마 번호</label>
+                            <input id="themeNum" type="text" name="themeNum" required>
+                            <div id="themeNumCheck"></div>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="themeName">테마 이름</label>
+                            <input id="themeName" type="text" name="themeName" required>
+                        </div>
+
+
+
+                        <div class="formGroup">
+                            <label for="difficulty">난이도</label>
+                            <select id="difficulty" name="difficulty" required>
+                                <option value="★">★</option>
+                                <option value="★★">★★</option>
+                                <option value="★★★">★★★</option>
+                                <option value="★★★★">★★★★</option>
+                                <option value="★★★★★">★★★★★</option>
+                            </select>
+                        </div>
+
+
+                        <div class="formGroup">
+                            <label for="genre">테마 장르</label>
+                            <!--<select id="genre" name="genre" required>
+                                <option value="스릴러">스릴러</option>
+                                <option value="감성">감성</option>
+                                <option value="탈출">탈출</option>
+                                <option value="추리, 판타지">추리,판타지</option>
+                                <option value="공포">공포</option>
+                            </select>-->
+                            <input id="genre" type="text" name="genre"  required>
+                        </div>
+
+
+
+                        <div class="formGroup">
+                            <label for="recNumPeople">추천 인원 수 (명)</label>
+                            <input id="recNumPeople"  name="recNumPeople" required>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="playTime">소요 시간 (분)</label>
+                            <input id="playTime" type="text" name="playTime" value="60분" readonly required>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="description">테마 설명</label>
+                            <textarea id="description" name="description" placeholder="테마 설명을 입력해주세요." required></textarea>
+                        </div>
+
+
+                        <div class="formGroup">
+                            <label for="files">테마 이미지</label>
+                            <input id="files" type="file" name="files" accept="image/*" multiple required>
+                        </div>
+
+
+                        <div class="formGroup">
+                            <button type="submit" class="register-button" id="themeBtn" disabled>등록하기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <script th:inline="javascript">
+
+        </script>
+        <script th:src="@{/dist/js/adminRegister.js}"></script>
+    </th:block>
+</th:block>
+</html>

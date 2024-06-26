@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/dist/css/comePage.css}">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+    <!-- services 라이브러리 불러오기 -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+    <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a4f6f7d6b53d1c1700f3d75c22cd297"></script>
+</head>
+<body>
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <div class="pageHeader">
+            <h1>오시는 길</h1>
+        </div>
+        <div class="mapContainer">
+            <div id="map" style="height: 400px;"></div>
+            <!-- 로드뷰 버튼 -->
+            <button id="roadviewBtn" class="roadviewBtn">
+                <img src="https://img.icons8.com/ios-filled/50/000000/street-view.png"
+                     style="vertical-align: middle;"/>
+                로드뷰 보기
+            </button>
+            <div class="zoomControl">
+                <button id="zoomIn" class="zoomBtn">+</button>
+                <button id="zoomOut" class="zoomBtn">-</button>
+            </div>
+        </div>
+        <div class="infoSection">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="address">주소</td>
+                    <td>인천광역시 남동구 인주대로 593 엔타스빌딩 (12층)</td>
+                </tr>
+                <tr>
+                    <td class="address">전화</td>
+                    <td>010-8948-9443</td>
+                </tr>
+                <tr>
+                    <td class="address">메일</td>
+                    <td>yondam84@gmail.com</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="roadviewModal" class="modal">
+            <div class="modalContent">
+                <span class="close">&times;</span>
+                <div id="roadview" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+
+        <script>
+            var mapContainer = document.getElementById('map'),
+                mapOptions = {
+                    center: new kakao.maps.LatLng(37.45032890524249, 126.70288019661811),
+                    level: 3
+                };
+
+            var map = new kakao.maps.Map(mapContainer, mapOptions);
+            var marker = new kakao.maps.Marker({
+                position: map.getCenter()
+            });
+            marker.setMap(map);
+
+            // 클릭한 위치에 마커 표시
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                // 클릭한 위치의 좌표
+                var latlng = mouseEvent.latLng;
+
+                // 마커 위치를 클릭한 위치로 이동
+                marker.setPosition(latlng);
+            });
+
+            var roadviewModal = document.getElementById('roadviewModal');
+            var span = document.getElementsByClassName('close')[0];
+
+            var roadviewContainer = document.getElementById('roadview');
+            var roadview = new kakao.maps.Roadview(roadviewContainer);
+            var roadviewClient = new kakao.maps.RoadviewClient();
+            var position = new kakao.maps.LatLng(37.45032890524249, 126.70288019661811);
+
+            document.getElementById('roadviewBtn').addEventListener('click', function() {
+                roadviewModal.style.display = 'block';
+                roadviewClient.getNearestPanoId(position, 50, function(panoId) {
+                    roadview.setPanoId(panoId, position);
+                });
+            });
+
+            span.onclick = function() {
+                roadviewModal.style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+                if (event.target == roadviewModal) {
+                    roadviewModal.style.display = 'none';
+                }
+            }
+
+            document.getElementById('zoomIn').addEventListener('click', function() {
+                map.setLevel(map.getLevel()- 1);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', function() {
+                map.setLevel(map.getLevel()+ 1);
+            });
+        </script>
+    </th:block>
+</th:block>
+</body>
+</html>

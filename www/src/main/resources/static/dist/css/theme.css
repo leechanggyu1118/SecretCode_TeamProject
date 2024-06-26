@@ -1,0 +1,388 @@
+@charset "UTF-8";
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+@font-face {
+    font-family: 'WavvePADO-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChosunCentennial';
+    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.body{
+margin:0;
+padding:0;
+}
+
+.theme-title{
+    width:100%;
+    height: 150px;
+    /* border: 1px solid white; */
+}
+.theme-title>span{
+    font-family: 'ChosunCentennial';
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size:45px;
+    color: white;
+
+    text-align:center;
+    line-height:180px;
+}
+
+
+.theme-container{
+     background-image: url("/dist/image/sc7.png");
+
+     margin: 0;
+     padding: 0;
+     /* border: 1px solid black; */
+     
+     background-repeat: no-repeat;
+     background-size: cover;
+     
+}
+.themeBox themeBox1{
+    margin-top: 50px;
+    margin-bottom : 50px;
+    width:100%;
+    height:600px;
+    /* border: 1px solid white; */
+    padding:0;
+
+}
+.themeBox themeBox2{
+width:100%;
+    height:600px;
+    /* border: 1px solid white; */
+    padding:0;
+
+}
+.themesmallBox{
+     width: 250px;
+     height: 500px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     /* border: 1px solid white; */
+     margin: 50px 70px 50px;
+     margin-left:100px;
+
+}
+
+
+.themeimgBox{
+    width: 250px;
+    height: 350px;
+    display: inline-block;
+    /* border: 1px solid rgb(158, 101, 101); */
+}
+
+.themeimg{
+    width: 250px;
+    height: 350px;
+}
+
+.themesmallBox:hover{
+    transform: scale(1.1,1.1);
+    transition : all 1s ease ;
+    box-shadow: 1px 1px 20px #ddd;
+    cursor: pointer;
+    
+}
+.yellowText{
+    color:#FFCC00;
+    text-shadow: 1px 1px 1px  #000;
+}
+
+
+
+.themeTitle{
+
+     display: inline-block;
+    /* border: 1px solid blue;*/
+
+     width:250px;
+     height:150px;
+     padding:0;
+}
+.themeTitle>p{
+    color:white;
+    font-size: 18px;
+    font-family: 'ChosunCentennial';
+}
+.imgTitle{
+    line-height:70px;
+    font-family: 'ChosunCentennial';
+    font-size:28px;
+    font-weight:700;
+    color:white;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.modal-content {
+    /* background-color: #fff; */
+    background-image: url("/dist/image/modalBack04.jpeg");
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+    bottom:20%;
+}
+
+.close {
+    color: #aaa;
+    margin-left:90%;
+    position:absolute;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+.modalImg{
+    margin-top:50px;
+    width:100%;
+    margin-left:100px;
+}
+.modalH{
+    margin-top:30px;
+    margin-left:30px;
+    float: left;
+    width:50%;
+    font-weight:700;
+    font-family: 'S-CoreDream-3Light';
+
+}
+.modalP{
+    margin-top:25px;
+    margin-left:30px;
+    font-size:20px;
+    float: left;
+    width:50%;
+    font-family: 'S-CoreDream-3Light';
+}
+.modalP>first-child{
+    margin-top:50px;
+}
+.modalText{
+    font-family: 'S-CoreDream-3Light';
+    margin-top:20px;
+    font-size:20px;
+    text-align:center;
+    white-space:pre-line; /* 자동 줄바꿈기능!! */
+      width: 100%;
+
+}
+.aLink{
+    font-family: 'S-CoreDream-3Light';
+    width:50%;
+    height:50px;
+    background-color:black;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:200px;
+    transition: background-color 0.3s ease;
+}
+.aLink:hover{
+    background-color:#FFCC00;
+    color:black;
+    transition: background-color 0.3s ease;
+
+}
+
+.notice-container{
+    font-family:'S-CoreDream-3Light';
+    border: 1px solid black;
+    width: 100%;
+    color : white;
+    background-image: url("/dist/image/sc5.png");
+    background-size : cover;
+    background-repeat : no-repeat;
+    height : 100%;
+    background-position : center;
+
+}
+
+.notice-container>.title{
+
+   width : 300px;
+   margin :auto;
+   text-align : center;
+   font-size : 44px;
+   font-weight: bold;
+   text-decoration : none;
+   padding-bottom : 30px;
+   margin-top:200px;
+}
+
+.noticetext{
+    margin-bottom : 30px;
+}
+
+.notice-container>.box{
+   border : 2px solid red;
+   margin-bottom: 30px;
+   border-left : 0;
+   border-right : 0;
+}
+
+.notice-container>.box>.noticebox{
+   height : 250px;
+   margin-top : 20px;
+   margin-bottom: 50px;
+   text-align: center;
+}
+
+
+.notice-container>.box>.noticebox>.icon{
+   width: 100px;
+   height:100px;
+
+   position: relative;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+
+
+}
+.bottom-text{
+     height : 50px;
+     margin : 15px 0 15px 0;
+}
+
+.notice-container>.box>.noticebox>.noticetext{
+
+     margin-top : 150px;
+     padding : 20px;
+     text-align: center;
+
+}
+.noticebottom{
+
+     height : 400px;
+     padding : 20px;
+     text-align: center;
+}
+#noticeicon{
+    width:150px;
+    height:150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#notice_p{
+    text-align: center;
+    font-size : 20px;
+    font-weight : 700;
+
+}
+
+#notice_span{
+    text-align: center;
+}
+
+#nbt{
+    color : yellow;
+
+}
+
+#yellow{
+    color: yellow;
+}
+
+
+
+@media screen and ( max-width : 600px){
+.modal-content {
+    /* background-color: #fff; */
+    background-image: url("/dist/image/modalBack04.jpeg");
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+
+}
+.modalImg{
+    margin-top:150px;
+    width:100%;
+    margin-left:120px;
+}
+.modalH{
+    margin-top:25px;
+    margin-left:10px;
+    float: left;
+    width:50%;
+    font-weight:700;
+    font-family: 'S-CoreDream-3Light';
+
+}
+.modalP{
+    margin-top:10px;
+    margin-left:10px;
+    font-size:20px;
+    float: left;
+    width:50%;
+    font-family: 'S-CoreDream-3Light';
+}
+.close {
+    color: #aaa;
+    margin-left:90%;
+    margin-top:20%;
+    position:absolute;
+    font-size: 28px;
+    font-weight: bold;
+}
+.aLink{
+    font-family: 'S-CoreDream-3Light';
+    width:50%;
+    height:50px;
+    background-color:black;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:130px;
+    transition: background-color 0.3s ease;
+}
+
+}

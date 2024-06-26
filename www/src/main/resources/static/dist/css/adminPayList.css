@@ -1,0 +1,100 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'S-CoreDream-3Light';
+    background-color: #f4f4f9;
+}
+
+.containerPay {
+
+font-family: 'S-CoreDream-3Light';
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    min-height: 800px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+
+}
+
+.table {
+    margin-top:50px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-align:center;
+
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #6c7ae0;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.table td {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .table thead {
+        display: none;
+    }
+
+    .table, .table tbody, .table tr, .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 15px;
+    }
+
+    .table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}

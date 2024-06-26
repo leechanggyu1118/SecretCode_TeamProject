@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"   lang="en" id="ht" >
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->
+<link rel="stylesheet" th:href="@{/dist/css/theme.css}">
+<link rel="stylesheet" th:href="@{/dist/css/themeReserv.css}">
+
+<th:block th:replace="~{layout::setFragment(~{this::content})}">
+
+  <th:block th:fragment="content" >
+
+    <div class="reservationTheme-container" id="top" style="text-align: center;" >
+      <div class="container-md" style="text-align: center;">
+        <div class="reservAllTheme text-center">
+          <span>예약하기</span>
+          <p></p>
+
+        </div>
+        <div class="reservHeader">
+
+        </div>
+        <div class="reservTimebox">
+          <form action="">
+            <p class="date">날짜 선택 > </p>
+            <input type="date" id="startDay" name="startDay" class="startDay">
+
+
+<!--              <label for="themeSelect">테마 선택 > </label>-->
+<!--              <select name="company" id="themeSelect" onclick="themeResButton">-->
+
+<!--                <option value="themeR1">위로</option>-->
+<!--                <option value="themeR2"> 노웨이아웃</option>-->
+<!--                <option value="themeR6" >Rendering</option>-->
+<!--                <option value="themeR5">SCENE</option>-->
+<!--                <option value="themeR3">Trigger</option>-->
+
+<!--              </select> </p>-->
+
+
+          </form>
+
+        </div>
+
+
+        <div class="reservationTheme themeBox1"  th:id="${themeNum}" style="text-align: center;" th:each="tvo :${themeReservList} ">
+          <div class="reservImg img1 "> <img th:src="'/upload/' + ${tvo.saveDir} + '/' + ${tvo.uuid} + '_' + ${tvo.fileName}" style="width:250px" height="350px"></div>
+          <div class="reservTextbox" >
+            <div class="reservTitle" >
+              <span>[[${tvo.themeName}]]</span><br>
+              <p class="preserve-whitespace">✓ 난이도 : <span class="yellowText">[[${tvo.difficulty}]]</span>  ✓ 장르 : [[${tvo.genre}]]   ✓ 추천 인원 : [[${tvo.recNumPeople}]]</p>
+
+            </div>
+            <div class="reservTimeTable">
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '10:00')">
+                  <span class="time1">10:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '11:30')">
+                  <span class="time2">11:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '13:00')">
+                  <span class="time3">13:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '14:30')">
+                  <span class="time4">14:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '16:00')">
+                  <span class="time5">16:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '17:30')">
+                  <span class="time6">17:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '19:00')">
+                  <span class="time7">19:00</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="time" th:data-themeName="${tvo.themeName}" onclick="reserveTime(this, '20:30')">
+                  <span class="time8">20:30</span><br>
+                  <span class="possible">예약 가능</span>
+                </a>
+              </li>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="notice-container">
+
+      <div class="title">
+        <span>NOTICE</span>
+        <p><h6>※주의사항※</h6></p>
+      </div> <!--title 디브 -->
+
+
+
+
+      <div class="box" style="text-align: center;">
+
+        <div class="noticebox" style="display: inline-block;">
+
+          <div class="icon">
+
+            <img id="noticeicon" th:src="@{/dist/image/notice04.png}">
+          </div> <!--아이콘 디브-->
+
+          <div class="noticetext">
+            <p id="notice_p">※실내흡연금지</p>
+            <span id="notice_span">모두의 호흡기를 위해<br>
+             실내 흡연은 제한됩니다.<br>
+             위반시 과태료 10만원이 부과됩니다.<br>
+                        액상형, 궐련형 전자담배 또한 <br>
+                        담배에 해당됩니다.<br></span>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div> <!--주의사항박스 디브-->
+
+
+        <div class="noticebox" style="display: inline-block;">
+          <div class="icon">
+            <img id="noticeicon" th:src="@{/dist/image/notice01.png}">
+
+          </div> <!--아이콘 디브-->
+
+          <div class="noticetext">
+            <p id="notice_p">※위험물품 반입금지</p>
+
+            <span id="notice_span">고객님의 안전을 위해 <br> cctv 및
+                        인터폰, 무전기가 <br> 설치되어 있습니다.<br>
+                        라이터, 칼 등 위험물품은 게임 룸 안으로 <br>반입이 금지됩니다.</span>
+            <br>
+            <br>
+            <br>
+            <br>
+
+          </div>
+        </div> <!--주의사항박스 디브-->
+
+        <div class="noticebox" style="display: inline-block;">
+          <div class="icon">
+            <img id="noticeicon" th:src="@{/dist/image/notice02.png}">
+
+          </div> <!--아이콘 디브-->
+
+          <div class="noticetext">
+            <p id="notice_p">※촬영 금지</p>
+            <span id="notice_span">
+                        컨텐츠 보호를 위해 사진촬영을 <br>
+                        금지하고 있습니다. <br>게임 입장 전
+                        핸드폰, 전자시계 등  <br>
+                        전자기기를 포함한 모든 소지품을 <br> 모두 보관함에 보관해주세요.</span>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div> <!--주의사항박스 디브-->
+
+        <div class="noticebox" style="display: inline-block;">
+          <div class="icon">
+            <img id="noticeicon" th:src="@{/dist/image/notice03.png}">
+          </div> <!--아이콘 디브-->
+
+          <div class="noticetext">
+            <p id="notice_p">※누설 금지</p>
+            <span id="notice_span">아직 체험하지 않은
+                        분들을 위해<br> 문제공유는
+                        삼가 해주시기 바랍니다.<br>
+                        게임이 끝나도 매장에 <br> 다음 참가자분들이 대기중이니<br>
+                        자세한 게임 얘기를 삼가주세요!</span>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div> <!--주의사항박스 디브-->
+
+      </div> <!--박스디브-->
+
+
+
+
+
+
+      <div class="noticebottom">
+        <div class="bottom-text">
+          <h3 id="nbt">※  예약 관련 사항  ※</h3>
+        </div>
+
+        <div id="not"><span class= id="nbs"> ◆  인원 및 시간 변경 시 매장으로 연락부탁드립니다.</span></div>
+        <div id="not"> <span id="nbs"> ◆  10분 전까지 꼭 매장에 와주세요. 지각 시 플레이 시간이 차감됩니다.</span></div>
+
+        <div id="not"><span  id="nbs"> ◆ 예약취소 및 변경은 예약일 24시간 전까지만 가능합니다.</span></div>
+        <br>
+        <br>
+
+        <div id="not"><span  id="nbs"> <h3 id="yellow">◆  당일예약 노쇼  ◆</h3><br> <h3 id="red">당일 노쇼 시 결제 금액 환불은 불가하며, 다음 번 예약이 제한될 수 있습니다.<h3>
+                  </span></div>
+
+
+
+
+
+
+      </div>
+
+
+    </div> <!--컨테이너 디브-->
+    <script>
+
+      // select 요소 가져오기
+      var select = document.getElementById("themeSelect");
+
+      // 모든 테마 div 가져오기
+      var themes = document.querySelectorAll(".reservationTheme");
+
+      // 기본 배경 이미지 크기 저장
+      //var defaultBackgroundSize = document.body.style.backgroundSize;
+
+
+
+
+        // 모든 테마 보이기
+    themes.forEach(function(theme) {
+      theme.style.display = "block";
+    });
+
+   // 선택된 테마가 있을 때만 선택된 테마만 보이기
+    if (selectedTheme) {
+      themes.forEach(function(theme) {
+        if (theme.id === selectedTheme) {
+          theme.style.display = "block";
+        } else {
+          theme.style.display = "none";
+        }
+      });
+
+      // 선택된 테마에 따라 배경 이미지 변경
+   // document.body.style.backgroundImage = "url('" + selectedTheme + "_배경이미지.jpg')";
+  } else {
+    // 선택된 테마가 없을 때는 기본 배경 이미지로 변경
+    //document.body.style.backgroundImage = "none";
+    // 기본 배경 이미지 크기를 원래대로 설정
+    //document.body.style.backgroundSize = defaultBackgroundSize;
+  }
+});
+
+
+    </script>
+    <script>
+
+    </script>
+    <script>
+      // 현재 날짜를 가져오는 함수
+      function getCurrentDate() {
+          var today = new Date();
+          var dd = String(today.getDate()).padStart(2, '0');
+          var mm = String(today.getMonth() + 1).padStart(2, '0'); // 1월이 0으로 시작하므로 +1
+          var yyyy = today.getFullYear();
+
+          return yyyy + '-' + mm + '-' + dd;
+      }
+
+      // 시작일 input 요소에 과거 날짜 선택 못하게 설정
+      document.addEventListener('DOMContentLoaded', function() {
+          var startDateInput = document.getElementById('startDay');
+
+      // 오늘 날짜 이전의 날짜를 선택하지 못하게 함
+      startDateInput.setAttribute('min', getCurrentDate());
+      });
+
+
+    </script>
+
+
+    <script>
+      function reserveTime(t ,selectedTime) {
+          var startDay = document.querySelector('.startDay').value;
+          var themeName = document.querySelector('.reservTitle span').textContent.trim();
+
+          console.log(t.dataset.themename);
+          console.log(selectedTime);
+
+          if (!startDay) {
+              alert('날짜를 선택해주세요.');
+              return;
+          }
+
+          // Thymeleaf 변수를 사용하여 URL 생성
+          var reservationUrl = '/portOnePay/portOnePay?startDay=' + encodeURIComponent(startDay) +
+                               '&themeName=' + encodeURIComponent(t.dataset.themename) +
+                               '&selectedTime=' + encodeURIComponent(selectedTime);
+
+
+          window.location.href = reservationUrl;
+          console.log(reservationUrl);
+      }
+
+
+    </script>
+
+
+
+    <script th:inline="javascript">
+      const reservations = /*[[${reservations}]]*/ null; // Thymeleaf를 통해 예약 정보를 가져옴
+      console.log('모든 예약 정보:', reservations);
+
+      document.addEventListener('DOMContentLoaded', function() {
+          const startDateInput = document.getElementById('startDay');
+
+          // 값이 변경되었을 때 이벤트 처리
+          startDateInput.addEventListener('change', function() {
+              const selectedDate = startDateInput.value;
+              console.log('선택된 날짜:', selectedDate);
+
+              // 모든 시간 요소들을 가져와서 예약 가능 상태로 초기화
+              const timeElements = document.querySelectorAll('.time');
+              timeElements.forEach(function(element) {
+                  element.classList.remove('disabled'); // CSS 클래스 제거
+                  element.setAttribute('href', '#'); // 링크 속성 복원
+                  element.style.pointerEvents = 'auto'; // 클릭 이벤트 활성화
+                  const n = element.querySelectorAll("span")[1]; // 예약 가능/불가능 텍스트 엘리먼트
+                  n.innerText = '예약 가능'; // 텍스트 원래대로 변경
+                  n.style.color = "white"; // 텍스트 색 원래대로 변경
+                  const r = element.querySelector("span"); // 시간 텍스트 엘리먼트
+                  r.style.color = "white"; // 시간 텍스트 색 원래대로 변경
+                  element.style.backgroundColor = ''; // 배경색 원래대로 변경
+              });
+
+              // 선택된 날짜와 일치하는 예약 정보 찾기
+              if (reservations) {
+                  for (let i = 0; i < reservations.length; i++) {
+                      if (reservations[i].reservationDate === selectedDate) {
+                          console.log("날짜 일치");
+
+                          // 시간 일치 확인
+                          const reservationTime = reservations[i].reservationTime;
+                          timeElements.forEach(function(element) {
+                              const r = element.querySelector("span"); // 시간
+                              const n = element.querySelectorAll("span"); // 예약 가능
+
+
+
+
+
+
+
+
+                              // 추가로 테마 이름 일치 여부 확인 가능
+                              const themeName = reservations[i].themeName;
+                              if (element.dataset.themename === themeName && r.innerText === reservationTime) {
+                                  console.log('테마 이름 일치:', themeName);
+                                  console.log('날짜, 시간, 테마 모두 일치');
+
+                                  // 예약 불가능으로 설정
+                                  element.classList.add('disabled'); // CSS 클래스 추가
+                                  element.removeAttribute('href'); // 링크 제거
+                                  element.style.pointerEvents = 'none'; // 클릭 이벤트 비활성화
+                                  n[1].innerText = '예약 불가능'; // 텍스트 변경
+                                  n[1].style.color = "gray";
+                                  r.style.color = "gray";
+                                  element.style.backgroundColor = '#505050';
+                              }
+                          });
+                      }
+                  }
+              }
+          });
+      });
+    </script>
+<script>
+  function setDisabledTimes(selectedDate) {
+    const timeElements = document.querySelectorAll('.time');
+    const currentTime = new Date(); // 현재 시간
+
+    // 현재 시간의 시간값을 구합니다 (예: 10:00 -> 600)
+    const currentHour = currentTime.getHours();
+    const currentMinute = currentTime.getMinutes();
+    const currentTotalMinutes = currentHour * 60 + currentMinute;
+
+    // 선택된 날짜와 오늘 날짜가 일치하는지 확인하고 처리합니다.
+    if (selectedDate === getCurrentDate()) {
+        timeElements.forEach(function(element) {
+            const r = element.querySelector("span"); // 시간 엘리먼트
+            const timeText = r.innerText.trim();
+            const timeParts = timeText.split(':');
+            const hour = parseInt(timeParts[0], 10);
+            const minute = parseInt(timeParts[1], 10);
+
+            // 시간값을 분으로 변환합니다 (예: 10:30 -> 630)
+            const totalMinutes = hour * 60 + minute;
+
+            // 선택된 시간이 현재 시간보다 이른 경우 예약 불가능으로 설정합니다.
+            if (totalMinutes < currentTotalMinutes) {
+                const n = element.querySelectorAll("span")[1]; // 예약 가능/불가능 텍스트 엘리먼트
+                element.classList.add('disabled'); // CSS 클래스 추가
+                element.removeAttribute('href'); // 링크 제거
+                element.style.pointerEvents = 'none'; // 클릭 이벤트 비활성화
+                n.innerText = '예약 불가능'; // 텍스트 변경
+                n.style.color = "gray";
+                r.style.color = "gray";
+                element.style.backgroundColor = '#505050'; // 배경색 변경
+            }
+        });
+    }
+}
+
+// 현재 날짜를 yyyy-mm-dd 형식으로 반환하는 함수
+function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+// 예약 날짜 선택 input의 변경 이벤트를 처리합니다.
+document.addEventListener('DOMContentLoaded', function() {
+    const startDateInput = document.getElementById('startDay');
+
+    startDateInput.addEventListener('change', function() {
+        const selectedDate = startDateInput.value;
+        console.log('선택된 날짜:', selectedDate);
+        setDisabledTimes(selectedDate); // 예약 불가능 시간 설정 함수 호출
+    });
+});
+</script>
+
+
+
+  </th:block>
+
+</th:block>

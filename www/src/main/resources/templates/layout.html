@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="setFragment(content)">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot</title>
+        <link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/dist/css/footer.css}">
+        <link rel="stylesheet" th:href="@{/dist/css/layout.css}">
+        <script th:src="@{/dist/js/bootstrap.bundle.min.js}"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+    <div class="layoutContainer">
+        <nav class="navbar navbar-dark bg-black fixed-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/" id="navImage"><img style="width:44px; height:44px;" src="/dist/image/logoWhite1.png"></a>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header bg-black" data-bs-theme="dark">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Secret Code</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body bg-black">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <div>
+                                <li class="nav-item1">
+                                    <a class="navbar-brand" href="#"><img style="width:70px; height:70px;" src="/dist/image/logoWhite1.png"></a>
+                                </li>
+                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">홈</a>
+                            </li>
+                            <li class="nav-item" sec:authorize="isAuthenticated()">
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/myPage}">마이페이지</a>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                <a class="nav-link active dropdown-toggle" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    관리자 목록
+                                </a>
+                                <ul class="dropdown-menu bg-black" aria-labelledby="adminDropdown">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminBoard}" style="color:#FFCC00;">회원 Q&A 관리게시판</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminUser}" style="color:#FFCC00;">회원 목록</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/portOnePay/adminPayList}" style="color:#FFCC00;">회원 예약/결제 목록</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" th:href="@{/adminRegister/adminRegister}" style="color:#FFCC00;">테마 등록</a>
+                                    </li>
+                                    <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                        <a class="nav-link active" aria-current="page" th:href="@{/adminRegister/adminThemeList}" style="color:#FFCC00;">테마 상세 리스트</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/member/login_register}" sec:authorize="isAnonymous()">로그인/회원가입</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/portOnePay/reservationCheck}">결제/예약 확인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/theme/theme}">테마 보기</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/theme/themeReserv}">예약하기</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/qna/list}">Q&A</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/review/list}">REVIEW</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/map/comePage}">오시는 길</a>
+                            </li>
+                            <li class="nav-item" sec:authorize="isAuthenticated()">
+                                <a class="nav-link active" aria-current="page" href="" id="logoutLink">로그아웃</a>
+                                <form action="/member/logout" method="post" id="logoutForm"></form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <th:block th:replace="${content}"></th:block>
+        <a href="#top" class="topBtn" style="display: none;" id="topBtn">
+            <img th:src="@{/dist/image/top2.png}" style="width:70px; height:70px;"></a>
+    </div>
+    <footer>
+        <section class="ft">
+            <footer>
+                <div class="container">
+                    <div class="box">
+                        <div class="top">SECRET CODE</div>
+                        <div class="top2">SECRET CODE.CO | WE CAN ESCAPE</div>
+                        <div class="textbox">
+                            <h6>
+                                    <span>
+                                        <span> 주소 : 인천광역시 남동구 인주대로 593 엔타스빌딩 12층 </span> <br><br>
+                                        <span> 영업시간 : 10:00 - 22:00</span><br><br>
+                                        <span> 대표번호 : <span id="numid">1599-1074</span><br>
+                                            이메일 : SecretCode@sc.escape.co.kr</span><br><br>
+                                        <span>대표자 : 이창규</span>
+                                        <span><br>사업자등록번호 : <span id="numid2">365-05-01731</span></span>
+                                    </span>
+                            </h6>
+                        </div>
+                        <hr>
+                        <div class="bottom">
+                                <span id="gray">
+                                    Copyright ⓒ Secret Chamber All right reserved
+                                </span>
+                            <div id="icon">
+                                <a><img style="width:25px; height:25px;" src="../dist/image/카카오톡.png"></a>
+                                <a><img style="width:25px; height:25px;" src="../dist/image/facebook.png"></a>
+                                <a><img style="width:25px; height:25px;" src="../dist/image/insta.png"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </footer>
+    <script>
+        window.addEventListener('scroll', function() {
+            var topBtn = document.getElementById('topBtn');
+            if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+                topBtn.style.display = 'block';
+            } else {
+                topBtn.style.display = 'none';
+            }
+        });
+
+        document.getElementById('logoutLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('logoutForm').submit();
+        });
+
+        document.querySelector(".logoutLink").addEventListener('click', function() {
+            alert("로그아웃 되었습니다.");
+        });
+    </script>
+    </body>
+
+</th:block>
+</html>

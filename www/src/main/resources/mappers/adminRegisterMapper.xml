@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SecretCode.ezen.www.repository.adminRegisterMapper">
+
+    <insert id="insert">
+        insert into theme(theme_num, theme_name, difficulty, genre, recnumpeople, playtime, description, uuid)
+        values (#{themeNum}, #{themeName}, #{difficulty}, #{genre}, #{recNumPeople}, #{playTime}, #{description}, #{uuid})
+    </insert>
+
+    <insert id="insertFile">
+        insert into file(uuid, save_dir, file_name, file_type, bno, file_size)
+        values (#{uuid}, #{saveDir}, #{fileName}, #{fileType}, #{bno}, #{fileSize})
+    </insert>
+
+    <select id="getList" resultType="SecretCode.ezen.www.domain.MemberVO">
+        select * from member
+    </select>
+
+    <select id="getreservationList" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        select * from theme t join  file f  on  t.uuid = f.uuid
+    </select>
+
+    <select id="getThemeNum" resultType="SecretCode.ezen.www.domain.adRegisterVO">
+        select theme_num, theme_name from theme
+    </select>
+
+    <delete id="deleteAuthUser">
+        delete from auth_member where email = #{email}
+    </delete>
+
+    <delete id="deleteTheme">
+        DELETE FROM theme WHERE theme_num = #{themeNum}
+    </delete>
+
+    <delete id="deleteUser">
+        delete from member where email = #{email}
+    </delete>
+
+    <select id="getListWithPaging" resultType="SecretCode.ezen.www.domain.MemberVO">
+        select m.email, m.nick_name, m.reg_at, m.last_login, m.phone, GROUP_CONCAT(a.auth) AS auths
+        from member m
+        left join auth_member a on m.email = a.email
+        <where>
+            <if test="auth != null and auth != ''">
+                and a.auth = #{auth}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                and (m.email like concat('%', #{keyword}, '%') or m.nick_name like concat('%', #{keyword}, '%'))
+            </if>
+        </where>
+        group by m.email
+        limit #{pageStart}, #{qty}
+    </select>
+
+    <select id="getAuthListByEmail" resultType="SecretCode.ezen.www.domain.AuthVO">
+        select * from auth_member where email = #{email}
+    </select>
+
+
+
+
+    <select id="getBoardTotalCount" resultType="int">
+        select count(*) from qna where is_notice = 'false'
+        <include refid="search"></include>
+    </select>
+
+    <select id="getBoardList" resultType="SecretCode.ezen.www.domain.QnaVO">
+        select * from qna where is_notice = 'false'
+        <include refid="search"></include>
+        order by bno desc limit #{pageStart}, #{qty}
+    </select>
+
+    <select id="getNoticeList" resultType="SecretCode.ezen.www.domain.QnaVO">
+        select * from qna
+        where is_notice ='true'
+        order by bno desc
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        select count(email) from member
+        <where>
+            <if test="keyword != null and keyword != ''">
+                email like concat('%', #{keyword}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getTotalCountWithAuth" resultType="int">
+        select count(m.email) from member m
+        join auth_member a on m.email = a.email
+        <where>
+            <if test="auth != null and auth != ''">
+                and a.auth = #{auth}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                and m.email like concat('%', #{keyword}, '%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="grantAdmin">
+        insert into auth_member (email, auth)
+        select #{email}, 'ROLE_ADMIN'
+        where not exists (select * from auth_member where email = #{email} and auth = 'ROLE_ADMIN')
+        and exists (select * from member where email = #{email});
+    </insert>
+
+    <delete id="revokeAdmin">
+        delete from auth_member where email = #{email} and auth = 'ROLE_ADMIN';
+    </delete>
+
+    <select id="hasAdminRole" resultType="int">
+        select count(*) from auth_member where email = #{email} and auth = 'ROLE_ADMIN';
+    </select>
+
+    <sql id="search">
+        <if test="keyword != null and keyword != ''">
+            <if test="type != null and type != ''">
+                <choose>
+                    <when test="type == 't'.toString()">
+                        and title like concat('%', #{keyword}, '%')
+                    </when>
+                    <when test="type == 'w'.toString()">
+                        and writer like concat('%', #{keyword}, '%')
+                    </when>
+                    <when test="type == 'c'.toString()">
+                        and content like concat('%', #{keyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </if>
+        <if test="type == 'completed'">
+            and cmt_qty > 0
+        </if>
+        <if test="type == 'uncompleted'">
+            and cmt_qty = 0
+        </if>
+    </sql>
+
+</mapper>

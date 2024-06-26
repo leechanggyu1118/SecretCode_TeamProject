@@ -1,0 +1,188 @@
+--2024-05-20
+--mysql -usecretCodeUser -pmysql
+
+
+
+create table qnacomment(
+cno bigint auto_increment,
+bno bigint not null,
+writer varchar(200) not null,
+content text not null,
+reg_at datetime default now(),
+mod_at datetime default now(),
+primary key(cno));
+
+create table file(
+uuid varchar(256) not null,
+save_dir varchar(256) not null,
+file_name varchar(256) not  null,
+file_type int(1) default 0,
+bno bigint not null,
+file_size bigint not null,
+reg_at datetime default now(),
+primary key(uuid));
+
+create table member(
+email varchar(200) not null,
+pwd varchar(256) not null,
+nick_name varchar(100) not null,
+reg_at datetime default now(),
+last_login datetime default now(),
+phone varchar(50) not null,
+primary key(email));
+
+create table auth_member(
+email varchar(200) not null,
+auth varchar(100) not null,
+foreign key(email) references
+member(email));
+
+CREATE TABLE qna(
+bno INT AUTO_INCREMENT,
+title VARCHAR(200),
+writer VARCHAR(200),
+content TEXT,
+isDel VARCHAR(10) DEFAULT 'N',
+reg_date DATETIME DEFAULT now(),
+read_count INT,
+cmt_qty INT,
+primary key(bno));
+
+CREATE TABLE review(
+bno INT AUTO_INCREMENT,
+rno int not null,
+title VARCHAR(200),
+writer VARCHAR(200),
+content TEXT,
+isDel VARCHAR(10) DEFAULT 'N',
+reg_date DATETIME DEFAULT now(),
+read_count INT,
+cmt_qty INT,
+FOREIGN KEY (rno) REFERENCES room(rno),
+primary key(bno));
+
+create table room(
+rno int not null auto_increment,
+rname int not null,
+is_reserved varchar(10),
+price int not null,
+uuid varchar(256),
+primary key(rno),
+foreign key(uuid) references file(uuid));
+
+create table reservation(
+   reservnum int not null auto_increment,
+   rno int not null,
+   email varchar(200) not null,
+   reservationtime int,
+   date datetime default now(),
+   primary key(reservnum),
+   foreign key(rno) references room(rno),
+   foreign key(email) references member(email));
+
+ALTER TABLE qna ADD COLUMN is_secret BOOLEAN DEFAULT FALSE;
+
+alter table qna modify read_count int default 0;
+update qna set read_count =0 where read_count is null;
+ alter table qna modify cmt_qty int default 0;
+update qna set cmt_qty =0 where cmt_qty is null;
+
+--2024.05.28
+ alter table qna modify is_secret varchar(10);
+ update qna set is_secret="false";
+
+ --2024.05.29
+
+ alter table qna modify is_secret varchar(10) default "false";
+  update qna set is_secret="false" where is_secret is null;
+ insert into auth_member values('skduddn@naver.com', 'ROLE_ADMIN');
+
+ --2024.05.30
+
+ alter table qna add scpwd varchar(100);
+ ALTER TABLE member ADD COLUMN type VARCHAR(256) DEFAULT "SecretCode";
+ ALTER TABLE qna ADD COLUMN is_notice varchar(10) DEFAULT 'false';
+
+ --2024.06.03
+ alter table qna modify is_secret varchar(50) ;
+
+ --2024.06.05
+
+create table reviewcomment(
+cno bigint auto_increment,
+bno bigint not null,
+writer varchar(200) not null,
+content text not null,
+reg_date datetime default now(),
+mod_date datetime default now(),
+primary key(cno));
+
+--2024.06.10
+
+ALTER TABLE review MODIFY COLUMN rno INT NULL;
+ALTER TABLE review ADD COLUMN theme VARCHAR(100);
+ALTER TABLE review ADD COLUMN rating INT;
+
+ create table theme(
+ theme_num int not null,
+ theme_name varchar(256) not null,
+ difficulty varchar(100) not null,
+ genre varchar(100) not null,
+ recnumpeople varchar(100) not null,
+ description text,
+ uuid varchar(256) not null,
+ foreign key(uuid) reference
+ file(uuid),
+ primary key(theme_num));
+
+ alter table theme add playtime varchar(100) default '60분' after recnumpeople;
+
+
+--2024.06.11
+drop table reservation;
+
+CREATE TABLE reservation(
+reservation_num BIGINT AUTO_INCREMENT,
+reservation_date DATE not null,
+reservation_time TIME not null,
+theme_name varchar(100) not null,
+email varchar(100) not null,
+name varchar(100) not null,
+phone varchar(100) not null,
+reservation_people INTEGER not null,
+reservation_price int not null,
+reservation_paydate DATETIME DEFAULT NOW(),
+PRIMARY KEY(reservation_num));
+
+ ALTER TABLE reservation
+ MODIFY COLUMN reservation_date  VARCHAR(100);
+
+ ALTER TABLE reservation
+MODIFY COLUMN reservation_time VARCHAR(100);
+
+--2024.06.12
+ alter table review add column uuid varchar(256);
+
+ ALTER TABLE review
+ MODIFY COLUMN read_count INT DEFAULT 0;
+
+ ALTER TABLE reservation ADD COLUMN merchant_uid varchar(200) NOT NULL AFTER reservation_num;
+
+ ALTER TABLE review
+ ADD COLUMN is_liked BOOLEAN DEFAULT FALSE;
+
+ --2024.06.14
+
+  alter table review add column theme_name varchar(256);
+
+  --2024.06.18
+  CREATE TABLE liked (
+      writer VARCHAR(200) NOT NULL,
+      bno INT NOT NULL,
+      is_liked TINYINT(1) DEFAULT 0,
+      PRIMARY KEY (writer, bno),
+      FOREIGN KEY (bno) REFERENCES review(bno)
+  );
+
+  drop table liked;
+   ALTER TABLE review ADD COLUMN likestatus TINYINT(1) DEFAULT 0;

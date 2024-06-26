@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" th:href="@{/dist/css/findEmailPwd.css}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+
+        <a href="https://front.codes/" class="logo" target="_blank">
+            <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
+        </a>
+
+        <div class="section">
+<!--            <img th:src=@{/dist/image/findEmailBg5.jpg} style="width:100%; height:100%;">-->
+
+            <div class="container" >
+                <div class="row full-height justify-content-center">
+                    <div class="col-12 text-center align-self-center py-5">
+                        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                            <!--<img height="70px" src="/dist/image/logoWhite1.png" class="registerLogo">-->
+                            <h6 class="mb-0 pb-3 findH6"><span>아이디 찾기 </span><span>비밀번호 찾기</span></h6>
+                            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+                            <label for="reg-log"></label>
+                            <div class="card-3d-wrap mx-auto">
+                                <div class="card-3d-wrapper">
+                                    <div class="card-front">
+                                        <div class="center-wrap">
+
+                                                <div class="section text-center">
+                                                    <img height="70px" src="/dist/image/logoWhite1.png" class="registerLogo">
+                                                    <h4 class="mb-4 pb-3">아이디 찾기</h4>
+                                                    <div class="form-group">
+                                                        <input type="text" name="logemail" class="form-style" placeholder="이름" id="findEmail" autocomplete="off">
+
+                                                    </div>
+                                                    <div class="form-group mt-2">
+                                                        <input type="text" name="phone" class="form-style" placeholder="휴대폰번호를 입력해주세요. ‘－’ 은 자동으로 입력됩니다." oninput="autoHyphen2(this)" maxlength="13" id="phoneE" autocomplete="off">
+
+
+                                                    </div>
+                                                    <button type="button" class="btn btn-outline-light checkBtnEmail" id="checkBtnEmail">아이디 검색하기</button>
+
+                                                    <!-- 버튼 테스트-->
+
+
+                                                    <div id="emailPhoneCheckLine" class="emailPhoneCheckLine"></div>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="center-wrap">
+                                            <div class="section text-center">
+                                                <img height="70px" src="/dist/image/logoWhite1.png" class="registerLogo">
+                                                <h4 class="mb-4 pb-3">비밀번호 재발급</h4>
+                                                <div class="form-group">
+                                                    <input type="email" name="logemail" class="form-style" placeholder="수신가능한 이메일을 입력해주세요. 예) example@test.com" id="emailP" autocomplete="off">
+
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="text" name="logemail" class="form-style" placeholder="이름" id="nickNameP" autocomplete="off">
+
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="text" name="phone" class="form-style" placeholder="휴대폰번호를 입력해주세요. ‘－’ 은 자동으로 입력됩니다." oninput="autoHyphen2(this)" maxlength="13" id="phoneP" autocomplete="off">
+                                                </div>
+                                                <button class="btn btn-outline-light" id="checkBtnPwd">비밀번호 재발급</button>
+
+
+                                                <h4 id="logdingCheck" class="logdingCheck">
+
+                                                    <span>E</span>
+                                                    <span>-</span>
+                                                    <span>M</span>
+                                                    <span>A</span>
+                                                    <span>I</span>
+                                                    <span>L</span>
+                                                    <span>발</span>
+                                                    <span>송</span>
+                                                    <span>중</span>
+                                                    <span>입</span>
+                                                    <span>니</span>
+                                                    <span>다</span>
+                                                    <span>.</span>
+                                                </h4>
+
+                                                <a th:href="@{/member/login_register}"> <button class="btn btn-primary" id="goToLogin">>>>로그인 페이지로 이동>>></button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script th:inline="javascript">
+            document.getElementById("checkBtnPwd").style.display="";
+            document.getElementById("goToLogin").style.display="none";
+            document.getElementById("logdingCheck").style.display="none";
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script th:src="@{/dist/js/findEmailPwd.js}"></script>
+    </th:block>
+</th:block>

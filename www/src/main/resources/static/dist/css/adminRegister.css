@@ -1,0 +1,223 @@
+@charset "UTF-8";
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+.container {
+    font-family: 'S-CoreDream-3Light';
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.container>h1{
+    text-align:center;
+
+}
+
+.pageTitle {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.themeRegister {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formGroup input[type="file"] {
+    padding: 6.5px;
+}
+
+.formGroup textarea {
+    height: 100px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btnDark {
+    background-color: #333;
+}
+
+.btnDark:hover {
+    background-color: #555;
+}
+
+        /* 테이블의 행 사이에 구분선 스타일링 */
+        table {
+            width: 30%;
+            border: 1px solid black; /* 모든 셀에 테두리 추가 */
+        }
+
+        th, td {
+            padding: 8px; /* 셀 안의 여백 설정 */
+            text-align: center;
+        }
+
+        /* 테이블의 행 사이에 구분선 스타일링 */
+        tr:not(:last-child) {
+            border-bottom: 1px solid black; /* 마지막 행 제외 모든 행에 아래쪽 구분선 추가 */
+        }
+
+        th{
+            background-color: #000000;
+             color: #fff;
+        }
+
+
+
+
+.themeTable{
+
+            margin: 0 auto; /* 가운데 정렬 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 50px; /* 필요에 따라 조정 */
+                         font-family: 'S-CoreDream-3Light';
+}
+
+.themeTableTitle{
+ font-family: 'S-CoreDream-3Light';
+    text-align: center;
+}
+
+    /* 기본적인 input 스타일링 */
+    input {
+        padding: 10px;
+        border: 1px solid #ccc; /* 기본 보더 두께와 색상 설정 */
+        border-radius: 4px;
+        outline: none; /* 포커스시 테두리 제거 */
+        transition: border-color 0.3s ease; /* 보더 색상 변경 트랜지션 */
+    }
+
+    /* 값이 입력되면 보더 색상을 검정색으로 변경 */
+    input:not(:placeholder-shown) {
+        border-color: black;
+    }
+    select:not(:placeholder-shown) {
+        border-color: black;
+    }
+
+    textarea:not(:placeholder-shown) {
+        border-color: black;
+    }
+
+    /* 포커스 시 보더 색상 변경 */
+    input:focus {
+        border-color: dodgerblue;
+    }
+
+/* 기본적인 버튼 스타일링 */
+    .register-button {
+        padding: 12px 24px;
+        background-color: #000000; /* 배경색을 검정색으로 설정 */
+        color: white; /* 텍스트 색상을 흰색으로 설정 */
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #000000; /* 테두리를 검정색으로 설정 */
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 변화 효과 설정 */
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    /* 비활성화 상태 */
+    .register-button[disabled] {
+        background-color: #999999; /* 배경색을 회색으로 설정 */
+        color: #666666; /* 텍스트 색상을 회색으로 설정 */
+        cursor: not-allowed; /* 커서 모양을 비활성화 상태로 변경 */
+        pointer-events: none; /* 클릭 이벤트 비활성화 */
+        opacity: 0.6; /* 투명도를 조정하여 비활성화 상태를 나타냄 */
+    }
+
+    /* 호버 효과 */
+    .register-button:hover:not([disabled]) {
+        background-color: #1a1a1a; /* 배경색을 진한 검정색으로 변경 */
+        color: white; /* 텍스트 색상을 흰색으로 변경 */
+        border-color: #1a1a1a; /* 테두리 색상을 진한 검정색으로 변경 */
+    }
+
+    /* 활성화 상태 */
+    .register-button.active {
+        background-color: dodgerblue; /* 배경색을 파란색으로 변경 */
+        border-color: dodgerblue; /* 테두리 색상을 파란색으로 변경 */
+    }
+
+    /* 활성화된 상태의 호버 효과 */
+    .register-button.active:hover {
+        background-color: #007acc; /* 배경색을 진한 파란색으로 변경 */
+        border-color: #007acc; /* 테두리 색상을 진한 파란색으로 변경 */
+    }
+
+    /* 활성화된 상태의 클릭 효과 */
+    .register-button.active:active {
+        transform: translateY(1px); /* 클릭 시 버튼이 아래로 약간 이동하는 효과 */
+        box-shadow: none; /* 클릭 시 그림자 제거 */
+    }
+
+
+.listTheme {
+    text-align: center; /* 텍스트를 가운데 정렬합니다. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.listTheme a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.themeListTag{
+    transition: background-color 0.3s ease;
+     font-family: 'S-CoreDream-3Light';
+}
+
+.themeListTag:hover{
+     background-color:#FFCC00;
+     color:black;
+     transition: background-color 0.3s ease;
+}

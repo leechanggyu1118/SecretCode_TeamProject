@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 결제 내역</title>
+    <link rel="stylesheet" th:href="@{/dist/css/adminPayList.css}">
+</head>
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <div class="containerPay">
+            <h1>결제 내역</h1>
+            <table class="table" style="text-align:center;">
+                <thead>
+                <tr style="text-align:center;">
+                    <th>예약 번호</th>
+                    <th>주문번호</th>
+                    <th>예약 날짜</th>
+                    <th>예약 시간</th>
+                    <th>테마 이름</th>
+                    <th>이메일</th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>참여 인원</th>
+                    <th>결제 금액</th>
+                    <th>결제 날짜</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="reservation : ${payList}">
+                    <td th:text="${reservation.reservationNum}"></td>
+                    <td th:text="${reservation.merchantUid}"></td>
+                    <td th:text="${reservation.reservationDate}"></td>
+                    <td th:text="${reservation.reservationTime}"></td>
+                    <td th:text="${reservation.themeName}"></td>
+                    <td th:text="${reservation.email}"></td>
+                    <td th:text="${reservation.name}"></td>
+                    <td th:text="${reservation.phone}"></td>
+                    <td th:text="${reservation.reservationPeople}"></td>
+                    <td th:text="${reservation.reservationPrice}"></td>
+                    <td th:text="${reservation.reservationPaydate}"></td>
+                    <td><button type="button" class="hwanboolBtn" onclick="cancelPayment('[[${reservation.merchantUid}]]')" th:data-merchantUid="${reservation.merchantUid }" th:data-reservationPrice="${reservation.reservationPrice }">환불</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</th:block>
+<script th:src="@{/dist/js/adminPayList.js}"></script>
+</html>

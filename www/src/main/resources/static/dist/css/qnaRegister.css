@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+/* Font 설정 */
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 Body 설정 */
+body {
+    font-family: 'S-CoreDream-3Light', sans-serif;
+    background-image: url("/dist/image/regdark.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.text-div{
+color:white;
+}
+
+/* 전체 컨테이너 설정 */
+.Qna-Register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 화면 전체 높이 */
+}
+
+/* 큰 박스 설정 */
+.Qna-Register-container .big-box {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+    color:white;
+}
+.top-title{
+color:white;
+margin-bottom:30px;
+font-size:50px;
+}
+
+/* 입력 요소 설정 */
+.Qna-Register-container input[type="text"],
+.Qna-Register-container input[type="password"]
+ {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1); /* 반투명 흰색 배경 */
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.Qna-Register-container textarea{
+ width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1); /* 반투명 흰색 배경 */
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height:300px;
+}
+
+/* 체크박스 및 레이블 설정 */
+.Qna-Register-container .secret-div,
+.Qna-Register-container .notice-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color:white;
+}
+
+.Qna-Register-container .secret-div input[type="checkbox"],
+.Qna-Register-container .notice-div input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.Qna-Register-container .secret-div label,
+.Qna-Register-container .notice-div label {
+    color: white;
+}
+
+/* 버튼 설정 */
+.Qna-Register-container button {
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background-color: #dcdcdc; /* 파란색 */
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.Qna-Register-container button:hover {
+    background-color: #969696; /* 더 진한 파란색 */
+}
+
+.Qna-Register-container button#noBtn {
+    background-color: #dcdcdc; /* 빨간색 */
+}
+
+.Qna-Register-container button#noBtn:hover {
+    background-color: #969696; /* 더 진한 빨간색 */
+}
+
+/* 반응형 설정 */
+@media (max-width: 768px) {
+    .Qna-Register-container .big-box {
+        width: 90%;
+    }
+}

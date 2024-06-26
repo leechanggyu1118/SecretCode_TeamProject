@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"   lang="en" id="ht" >
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->
+<link rel="stylesheet" th:href="@{/dist/css/theme.css}">
+<link rel="stylesheet" th:href="@{/dist/js/theme.js}">
+
+<th:block th:replace="~{layout::setFragment(~{this::content})}">
+
+    <th:block th:fragment="content" >
+
+
+        <div class="theme-container text-center">
+
+            <div class="theme-title">
+                <span>테마 소개</span>
+
+            </div> <!--title 디브 -->
+
+
+            <div class="themeBox themeBox1 container-md" style="text-align: center;">
+<!--                <div class="row row-cols-3">-->
+
+                <div class="themesmallBox" id="sb" style="display: inline-block;" th:each="tvo :${theme}">
+                <div class="themeimgBox" >
+                    <img class="themeimg" th:src="'/upload/' + ${tvo.saveDir} + '/' + ${tvo.uuid} + '_' + ${tvo.fileName}">
+                </div>
+                    <div class="themeTitle">
+
+                        <span class="imgTitle">[[${tvo.themeName}]]</span>
+                        <p>난이도 : <span class="yellowText">[[${tvo.difficulty}]]</span></p>
+
+                        <p>장르 : [[${tvo.genre}]]</p>
+                        <a href="#" class="modal-trigger" data-modal-id="'modal' + ${iter.count}"></a>
+                    </div>
+                </div>
+
+
+        </div>
+
+
+        <!-- Modals -->
+            <div th:each="tvo, iter :${theme}" class="modal" th:id="'modal' + ${iter.count}">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modalImg">
+                    <img th:src="'/upload/' + ${tvo.saveDir} + '/' + ${tvo.uuid} + '_' + ${tvo.fileName}" style="width:250px; height:350px; display:block; float:left;">
+                    <h2 class="modalH">[[${tvo.themeName}]]</h2>
+                    <p class="modalP">난이도 : <span class="yellowText">[[${tvo.difficulty}]]</span></p>
+                    <p class="modalP">장르 : [[${tvo.genre}]]</p>
+                    <p class="modalP">추천 인원 : [[${tvo.recNumPeople}]]</p>
+                    <p class="modalP">플레이 시간 : [[${tvo.playTime}]]</p>
+
+                </div>
+
+                <p class="modalText">
+                    [[${tvo.description}]] </p>
+                <a th:href="@{/theme/themeReserv}" class="aLink">예약하러 가기</a>
+            </div>
+        </div>
+
+
+        <div class="notice-container">
+
+            <div class="title">
+                <span>NOTICE</span>
+                <p><h6>※주의사항※</h6></p>
+            </div> <!--title 디브 -->
+
+
+
+
+            <div class="box" style="text-align: center;">
+
+                <div class="noticebox" style="display: inline-block;">
+
+                    <div class="icon">
+
+                        <img id="noticeicon" th:src="@{/dist/image/notice04.png}">
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※실내흡연금지</p>
+                        <span id="notice_span">모두의 호흡기를 위해<br>
+             실내 흡연은 제한됩니다.<br>
+             위반시 과태료 10만원이 부과됩니다.<br>
+                        액상형, 궐련형 전자담배 또한 <br>
+                        담배에 해당됩니다.<br></span>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+
+                <div class="noticebox" style="display: inline-block;">
+                    <div class="icon">
+                        <img id="noticeicon" th:src="@{/dist/image/notice01.png}">
+
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※위험물품 반입금지</p>
+
+                        <span id="notice_span">고객님의 안전을 위해 <br> cctv 및
+                        인터폰, 무전기가 <br> 설치되어 있습니다.<br>
+                        라이터, 칼 등 위험물품은 게임 룸 안으로 <br>반입이 금지됩니다.</span>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+                <div class="noticebox" style="display: inline-block;">
+                    <div class="icon">
+                        <img id="noticeicon" th:src="@{/dist/image/notice02.png}">
+
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※촬영 금지</p>
+                        <span id="notice_span">
+                        컨텐츠 보호를 위해 사진촬영을 <br>
+                        금지하고 있습니다. <br>게임 입장 전
+                        핸드폰, 전자시계 등  <br>
+                        전자기기를 포함한 모든 소지품을 <br> 모두 보관함에 보관해주세요.</span>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+                <div class="noticebox" style="display: inline-block;">
+                    <div class="icon">
+                        <img id="noticeicon" th:src="@{/dist/image/notice03.png}">
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※누설 금지</p>
+                        <span id="notice_span">아직 체험하지 않은
+                        분들을 위해<br> 문제공유는
+                        삼가 해주시기 바랍니다.<br>
+                        게임이 끝나도 매장에 <br> 다음 참가자분들이 대기중이니<br>
+                        자세한 게임 얘기를 삼가주세요!</span>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+            </div> <!--박스디브-->
+
+            <div class="noticebottom">
+                <div class="bottom-text">
+                    <h3 id="nbt">※  예약 관련 사항  ※</h3>
+                </div>
+
+                <div id="not"><span class= id="nbs"> ◆  인원 및 시간 변경 시 매장으로 연락부탁드립니다.</span></div>
+                <div id="not"> <span id="nbs"> ◆  10분 전까지 꼭 매장에 와주세요. 지각 시 플레이 시간이 차감됩니다.</span></div>
+
+                <div id="not"><span  id="nbs"> ◆ 예약취소 및 변경은 예약일 24시간 전까지만 가능합니다.</span></div>
+                <br>
+                <br>
+
+                <div id="not"><span  id="nbs"> <h3 id="yellow">◆  당일예약 노쇼  ◆</h3><br> <h3 id="red">당일 노쇼 시 결제 금액 환불은 불가하며, 다음 번 예약이 제한될 수 있습니다.<h3>
+                  </span></div>
+
+            </div>
+
+        </div> <!--컨테이너 디브-->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const modalTriggers = document.querySelectorAll('.themesmallBox');
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.close');
+
+    // Modal functionality
+    modalTriggers.forEach((trigger, index) => {
+        trigger.addEventListener('click', () => {
+            const modalId = `modal${(index % 10) + 1}`;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        });
+    });
+       // Modal functionality
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const modalId = trigger.getAttribute('data-modal-id');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+            });
+        });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.closest('.modal').style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', (event) => {
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+});
+
+</script>
+
+    </th:block>
+
+</th:block>

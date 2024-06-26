@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/dist/css/adminDetail.css}">
+    <title>게시글 상세</title>
+</head>
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <div class="adminDetail">
+            <h1>게시글 상세</h1>
+            <div class="detailInfo">
+                <p><strong>번호:</strong>
+                    <span th:text="${list.bno}">번호</span>
+                </p>
+                <p><strong>제목:</strong>
+                    <span th:text="${list.title}">제목</span>
+                </p>
+                <p><strong>작성자:</strong>
+                    <span th:text="${list.writer}">작성자</span>
+                </p>
+                <p><strong>작성일:</strong>
+                    <span th:text="${list.regDate}">작성일</span>
+                </p>
+                <p><strong>내용:</strong>
+                    <span th:text="${list.content}">내용</span>
+                </p>
+                <p><strong>조회수:</strong>
+                    <span th:text="${list.readCount}">조회수</span>
+                </p>
+                <p><strong>답변 상태:</strong>
+                    <span th:text="${list.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></span>
+                </p>
+                <input type="hidden" id="qnaId" th:value="${list.bno}">
+            </div>
+            <div class="adminActions">
+                <a class="button" th:href="@{/adminRegister/adminBoard}">목록으로</a>
+                <button class="button" id="deleteBtn">삭제</button>
+            </div>
+
+            <div class="commentSection">
+                <h2>댓글</h2>
+                <div id="commentList"></div>
+                <div class="commentForm">
+                    <textarea id="cmtText" placeholder="댓글을 입력하세요"></textarea>
+                    <button id="cmtAddBtn">댓글 추가</button>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</th:block>
+
+<script type="text/javascript">
+    const bnoVal = [[${list.bno}]];
+    console.log(bnoVal);
+</script>
+<script th:src="@{/dist/js/adminCommentDetail.js}"></script>
+<script th:src="@{/dist/js/adminDetail.js}"></script>
+</html>

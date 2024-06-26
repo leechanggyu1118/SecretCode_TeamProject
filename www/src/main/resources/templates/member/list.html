@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+
+        <div class="container-md " >
+
+            <h1>User Member List</h1>
+            <div class="container text-center">
+                <div class="row">
+
+
+                    <th:block th:each="mvo:${list}">
+
+                        <div class="col">
+                            <div class="card text-bg-dark mb-3 border-warning mb-3" style="width: 25rem;">
+                                <img src="/img/userImg.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">닉네임 : [[${mvo.nickName }]]</h5>
+                                    <p class="card-title">이메일 : [[${mvo.email }]]</p>
+
+                                    <span class="card-title" th:each="authList: ${mvo.authList}" var="authList">
+                                        [[${authList.auth }]]
+                                    </span>
+
+                                    <p class="card-text">아이디 생성일 : [[${mvo.regAt}]]</p>
+                                    <p class="card-text">마지막 접속일 : [[${mvo.lastLogin }]]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </th:block>
+
+
+                </div>
+            </div>
+        </div>
+
+    </th:block>
+</th:block>

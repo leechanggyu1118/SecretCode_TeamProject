@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SecretCode.ezen.www.repository.QnaCommentMapper">
+
+    <insert id="post">
+        insert into qnacomment (bno, writer, content) values (#{bno}, #{writer}, #{content})
+    </insert>
+
+
+
+    <select id="bnoToTotalCount" resultType="int">
+        select count(cno) from QnaComment where bno=#{bno}
+    </select>
+
+    <select id="getList" resultType="SecretCode.ezen.www.domain.QnaCommentVO">
+        select * from qnacomment where bno=#{bno}
+        order by cno desc
+        limit #{pgvo.pageStart}, #{pgvo.qty}
+
+    </select>
+
+
+    <update id="update">
+        update qnacomment set content =#{content}
+        where cno=#{cno}
+    </update>
+
+    <delete id="delete">
+
+        delete from qnacomment where cno=#{cno}
+    </delete>
+
+    <select id="myNickName" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
+
+
+
+
+
+
+
+
+</mapper>

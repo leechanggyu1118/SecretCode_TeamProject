@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 마이페이지 css변경 2024/06/24">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/www">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/www">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="www" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;leechanggyu1118&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:EzenLastProject/SecretCode_TeamProject.git&quot;,
+    &quot;accountId&quot;: &quot;1f6f9a15-2e6d-4020-9a43-2ca03c9f3a20&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2gql2dAewzATAjcNtKbKqf4ig8Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.SecretCodeApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.C:/leechanggyu/SecretCode_TeamProject/www [SecretCodeApplication.main()].executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.www [:SecretCodeApplication.main()].executor": "Run",
+    "Gradle.www [bootJar].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/leechanggyu/_boot_workspace2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="SecretCode.ezen.www.repository" />
+      <recent name="SecretCode.ezen.www.service" />
+      <recent name="SecretCode.ezen.www.domain" />
+      <recent name="SecretCode.ezen.www.googleSocialLogin" />
+      <recent name="SecretCode.ezen.www.controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\leechanggyu\SecretCode_TeamProject\www\src\main\resources\static\dist\image" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\leechanggyu\SecretCode_TeamProject\www\src\main\resources\templates\theme" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle bootJar" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.www [bootJar]">
+    <configuration name="SecretCodeApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SecretCode.ezen.www.SecretCodeApplication" />
+      <module name="www.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SecretCode.ezen.www.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="www [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/www" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.www [bootJar]" />
+        <item itemvalue="Application.SecretCodeApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6374941-409f-4dff-8c9a-260ab7a9b62b" name="Changes" comment="" />
+      <created>1716432783185</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716432783185</updated>
+    </task>
+    <task id="LOCAL-00001" summary="이창규_회원가입수정1">
+      <option name="closed" value="true" />
+      <created>1716455921806</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716455921807</updated>
+    </task>
+    <task id="LOCAL-00002" summary="이창규_회원가입수정2">
+      <option name="closed" value="true" />
+      <created>1716455936920</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716455936920</updated>
+    </task>
+    <task id="LOCAL-00003" summary="이창규_회원가입 로그인 수정중 1">
+      <option name="closed" value="true" />
+      <created>1716542426879</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716542426879</updated>
+    </task>
+    <task id="LOCAL-00004" summary="이창규_회원가입 디자인작업중1">
+      <option name="closed" value="true" />
+      <created>1716774031467</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716774031467</updated>
+    </task>
+    <task id="LOCAL-00005" summary="이창규_회원가입 이메일인증번호 2024/05/28">
+      <option name="closed" value="true" />
+      <created>1716885739878</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716885739878</updated>
+    </task>
+    <task id="LOCAL-00006" summary="이창규_회원가입 이메일인증번호 2024/05/28 수정1">
+      <option name="closed" value="true" />
+      <created>1716887598002</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716887598002</updated>
+    </task>
+    <task id="LOCAL-00007" summary="이창규_이메일인증_완료 소셜로그인_수정 2024/05/30 수정중">
+      <option name="closed" value="true" />
+      <created>1717059121881</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717059121881</updated>
+    </task>
+    <task id="LOCAL-00008" summary="이창규_이메일인증_완료 소셜로그인_완료 css작업 2024/05/31 수정중">
+      <option name="closed" value="true" />
+      <created>1717141544819</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717141544819</updated>
+    </task>
+    <task id="LOCAL-00009" summary="이창규_이메일인증_완료 소셜로그인_완료 css작업 2024/05/31 수정중1">
+      <option name="closed" value="true" />
+      <created>1717143372344</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717143372344</updated>
+    </task>
+    <task id="LOCAL-00010" summary="이창규_이메일인증_완료 소셜로그인_완료 css작업,아이디 비밀번호 찾기_개발중 2024/06/03">
+      <option name="closed" value="true" />
+      <created>1717401107314</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1717401107314</updated>
+    </task>
+    <task id="LOCAL-00011" summary="이창규_이메일인증_완료 소셜로그인_완료 css작업,아이디 아이디 비밀번호 찾기_완료 2024/06/05">
+      <option name="closed" value="true" />
+      <created>1717570685612</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717570685612</updated>
+    </task>
+    <task id="LOCAL-00012" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 2024/06/07">
+      <option name="closed" value="true" />
+      <created>1717747265324</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1717747265324</updated>
+    </task>
+    <task id="LOCAL-00013" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 _작업중 2024/06/11">
+      <option name="closed" value="true" />
+      <created>1718083989217</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1718083989217</updated>
+    </task>
+    <task id="LOCAL-00014" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리_작업중2024/06/12">
+      <option name="closed" value="true" />
+      <created>1718159333019</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1718159333019</updated>
+    </task>
+    <task id="LOCAL-00015" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리_작업중 마이페이지 작업중 2024/06/1">
+      <option name="closed" value="true" />
+      <created>1718266025476</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1718266025476</updated>
+    </task>
+    <task id="LOCAL-00016" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리_작업중 마이페이지_정보 수정 예약_qna 현황_작업중 2024/06/14">
+      <option name="closed" value="true" />
+      <created>1718353660458</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1718353660458</updated>
+    </task>
+    <task id="LOCAL-00017" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중, 2024/06/17">
+      <option name="closed" value="true" />
+      <created>1718608314099</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718608314099</updated>
+    </task>
+    <task id="LOCAL-00018" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 2024/06/17">
+      <option name="closed" value="true" />
+      <created>1718613703653</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1718613703653</updated>
+    </task>
+    <task id="LOCAL-00019" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18">
+      <option name="closed" value="true" />
+      <created>1718699773259</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1718699773259</updated>
+    </task>
+    <task id="LOCAL-00020" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 수정중 2024/06/18">
+      <option name="closed" value="true" />
+      <created>1718701322368</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1718701322368</updated>
+    </task>
+    <task id="LOCAL-00021" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지 수정중, 환불_정리중 2024/06/20">
+      <option name="closed" value="true" />
+      <created>1718844687778</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1718844687778</updated>
+    </task>
+    <task id="LOCAL-00022" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지 수정중, 환불_에러확인 2024/06/20">
+      <option name="closed" value="true" />
+      <created>1718846128040</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1718846128040</updated>
+    </task>
+    <task id="LOCAL-00023" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지 수정중, 환불_에러확인중 2024/06/20">
+      <option name="closed" value="true" />
+      <created>1718847171676</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1718847171676</updated>
+    </task>
+    <task id="LOCAL-00024" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/21">
+      <option name="closed" value="true" />
+      <created>1718941657272</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1718941657272</updated>
+    </task>
+    <task id="LOCAL-00025" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경2 2024/06/21">
+      <option name="closed" value="true" />
+      <created>1718941743789</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1718941743789</updated>
+    </task>
+    <task id="LOCAL-00026" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/24">
+      <option name="closed" value="true" />
+      <created>1719198506134</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1719198506134</updated>
+    </task>
+    <task id="LOCAL-00027" summary="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 마이페이지 css변경 2024/06/24">
+      <option name="closed" value="true" />
+      <created>1719215885609</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1719215885609</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="이창규_회원가입 디자인작업중1" />
+    <MESSAGE value="이창규_회원가입 이메일인증번호 2024/05/28" />
+    <MESSAGE value="Merge branch 'main' of github.com:EzenLastProject/SecretCode_TeamProject" />
+    <MESSAGE value="이창규_회원가입 이메일인증번호 2024/05/28 수정1" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_수정 2024/05/30 수정중" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료 css작업 2024/05/31 수정중" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료 css작업 2024/05/31 수정중1" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료 css작업,아이디 비밀번호 찾기_개발중 2024/06/03" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료 css작업,아이디 아이디 비밀번호 찾기_완료 2024/06/05" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 2024/06/07" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 _작업중 2024/06/11" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리_작업중2024/06/12" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리_작업중 마이페이지 작업중 2024/06/1" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리_작업중 마이페이지_정보 수정 예약_qna 현황_작업중 2024/06/14" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중, 2024/06/17" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 2024/06/17" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 2024/06/18" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보 수정중입니다2, 예약확인 페이지 수정중 2024/06/18" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지 수정중, 환불_정리중 2024/06/20" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지 수정중, 환불_에러확인 2024/06/20" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지 수정중, 환불_에러확인중 2024/06/20" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/21" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경2 2024/06/21" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 2024/06/24" />
+    <MESSAGE value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 마이페이지 css변경 2024/06/24" />
+    <option name="LAST_COMMIT_MESSAGE" value="이창규_이메일인증_완료 소셜로그인_완료아이디 아이디찾기/비밀번호 재발급_완료 css/js 작업완료 예약/결제 페이지 결제 후 관리 작업, 관리자 테마등록 관리, 예약_qna 현황, 관리자 테마리스트, 마이페이지_회원정보, 예약확인 페이지, 환불, 결제 주문번호 방식 변경 마이페이지 css변경 2024/06/24" />
+  </component>
+</project>

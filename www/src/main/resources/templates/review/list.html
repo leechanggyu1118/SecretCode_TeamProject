@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>REVIEW 목록</title>
+<link rel="stylesheet" th:href="@{/dist/css/reviewlist.css}">
+
+<style>
+    /* 감싸고 있는 div 요소에 대한 스타일 */
+.like-box {
+    /* 필요한 스타일을 여기에 추가합니다 */
+    float: right; /* 우측 정렬 */
+}
+
+.like-button, .dislike-button {
+    width: 50px;
+    height: 50px;
+    font-size:26px;
+    text-align:center;
+
+    border-radius: 10px; /* 보더의 둥근 정도 설정 */
+    transition: border-color 0.3s ease-in-out; /* 보더 색상 전환 효과 추가 */
+    cursor: pointer;
+    background-size: cover;
+    transition: background-color 0.3s ease-in-out; /* 배경색 전환 효과 추가 */
+    background-color: transparent; /* 기본 배경색 투명으로 설정 */
+}
+
+
+    .card-title input,
+.card-text textarea {
+   border-left: 1px solid rgba(0, 0, 0, 0.1); /* 왼쪽 테두리 설정 */
+    border-top: none; /* 위 테두리 제거 */
+    border-right: none; /* 오른쪽 테두리 제거 */
+    border-left: none; /* 오른쪽 테두리 제거 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 왼쪽 테두리 설정 */
+    outline: none; /* 포커스 효과 제거 */ /* 외곽선 제거 */
+    outline: none; /* 포커스 효과 제거 */
+    width:100%;
+}.review-text{
+height:120px;
+}
+
+.card-title input{
+
+    white-space: nowrap; /* 줄 바꿈 방지 */
+    overflow: hidden; /* 넘치는 부분 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분 생략 부호로 표시 */
+}
+
+
+
+ .ModBtn,
+.DelBtn {
+    color: black; /* 기본 버튼 색상 */
+    border:none;
+    border-radius: 5px; /* 둥근 테두리 */
+
+
+    cursor: pointer; /* 커서 모양 변경 */
+    transition: color 0.3s, background-color 0.3s; /* 배경색과 글자색 변화 애니메이션 */
+}
+
+.ModBtn:hover,
+.DelBtn:hover {
+    color: #fff; /* 호버 시 글자색 변경 */
+    background-color: #007bff; /* 호버 시 배경색 변경 */
+}
+
+
+
+</style>
+
+<th:block th:replace="~{layout::setFragment(~{this::content})}">
+
+    <th:block th:fragment="content" >
+
+        <div class="full">
+            <div class="container">
+
+                <h1 class="mt-5">리뷰</h1>
+                <!-- review/register.html -->
+
+
+
+                <form id="themeForm" action="/review/list" method="get">
+                    <div class="input-group mb-3">
+                        <select name="themeName" id="themeSelect" class="themeSelect" onchange="submitForm()">
+                            <option value=""> 테마를 선택하세요.</option>
+                            <!-- 테마 목록 추가 -->
+                            <option th:each="theme : ${themeList}" th:value="${theme}" th:text="${theme}" th:selected="${theme == selectedTheme}"></option>
+                        </select>
+
+                    </div>
+                    <button class="btn btn-outline-secondary" type="submit" style="display:none; ">선택</button>
+                </form>
+
+                <div class="regBtn-box">
+                    <form action="/review/register" >
+
+                        <button type="button" id="review-write" th:attr="data-authenticated=${#authentication.name != 'anonymousUser'}">리뷰 등록</button>
+
+                    </form>
+
+                </div>
+
+
+
+
+                <!-- 리뷰 목록 -->
+                <div th:if="${list.empty}" class="" style="height: 200px;">
+                    <div class="">
+                        <p id="noreview">해당 테마에 대한 리뷰가 없습니다.</p>
+                    </div>
+                </div>
+
+                <div th:each="rvo : ${list}" class="card mt-3" style="border-bottom-right-radius: 72px; border: 2px solid white; ">
+
+                    <div class="card-body d-flex" style="height:330px;">
+
+                        <!-- 이미지 영역 -->
+                        <div class="theme-img" style="width: 25%; ">
+                            <img style="height:100%; width:200px;" th:src="'/upload/' + ${rvo.saveDir} + '/' + ${rvo.uuid} + '_' + ${rvo.fileName}" class="img-fluid" alt="Review Image">
+                        </div>
+
+
+                        <!-- 내용 영역 -->
+                        <div class="card-details" style="width: 65%;">
+                            <div class="content">
+                                <div class="star-rating">
+
+            <span th:switch="${rvo.rating}">
+                <span th:case="1">★</span>
+                <span th:case="2">★★</span>
+                <span th:case="3">★★★</span>
+                <span th:case="4">★★★★</span><span th:case="5">★★★★★</span>
+            </span>
+                                </div>
+                                <div class="theme-name">
+                                    <h5 class="theme-name2">
+       <span th:text="${rvo.themeName}">
+
+        </span>
+                                    </h5>
+                                </div>
+
+
+<!--  <form action="/review/modify" method="post">-->
+                                <form action="/review/modify" method="post">
+
+
+
+                                    <th:blcok>
+                                <div class="card-title">
+
+                                 <h5><span> <input type="text" name="title" id="titleInput"
+                                                   th:value="${rvo.title}"
+                                                   th:readonly="${NickName != rvo.writer}"></span></h5>
+                                </div>
+
+                                    <div class="card-text">
+                                    <textarea class="review-text" name="content" id="contentInput" rows="3"
+                                              th:readonly="${NickName != rvo.writer}"
+                                              th:text="${rvo.content}"></textarea>
+                                    </div>
+
+                            </div>
+
+                        </div>
+
+                       <div class="like-box">
+                           <div class="card-subtitle mb-2 text-muted" >
+                               <span style="font-size:18px; font-weight:700; "> [[${rvo.writer}]]</span>
+                              <br><br><span>[[${rvo.regDate}]] </span>
+                           </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="btn-box" style="display:flex; justify-content:flex-start; margin-left:30px;">
+
+                            <input type="hidden" name="bno" th:value="${rvo.bno}">
+                            <button type="submit" class="ModBtn" style="width:50px; float:right; height:30px; margin:0 0 10px 0;" th:if="${NickName == rvo.writer}"
+                                    onclick="confirmUpdate()">수정
+                            </button>
+                        </form>
+
+                        <!-- 삭제 버튼   NickName == rvo.writer or  onclick="confirmDelete()" -->
+                        <div>
+                            <form action="/review/delete" method="post">
+                                <th:block th:if="${NickName == rvo.writer or #authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                                    <input type="hidden" name="bno" th:value="${rvo.bno}" />
+                                    <button type="submit" class="DelBtn" style="width:50px; float:right; height:30px; margin:0 0 10px 0;"  onclick="confirmDelete()">삭제</button>
+                                </th:block>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <nav aria-label="Page navigation example" >
+                <ul class="pagination justify-content-center" style="margin: 50px 0 0 0;">
+                    <li th:if="${ph.prev}"  class="page-item">
+                        <a class="page-link" th:href="@{/review/list(pageNo=${ph.startPage-1},qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <!--th:classappend: 동적 클래스 추가-->
+
+                    <th:block th:each="i:${#numbers.sequence(ph.startPage,ph.endPage)} ">
+
+                        <li class="page-item" th:classappend="${ph.pgvo.pageNo == i ?'active':''}" aria-current="page">
+                            <a class="page-link" style="color:black; background-color:white;" th:href="@{/review/list(pageNo=${i},qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}">[[${i}]]</a>
+                        </li>
+                    </th:block>
+
+                    <li th:if="${ph.next}" class="page-item">
+                        <a class="page-link"  th:href="@{/review/list(pageNo=${ph.endPage+1}
+                                    ,qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <script th:src="@{/dist/js/ReviewList.js}"></script>
+
+
+
+
+
+
+
+    </th:block>
+</th:block>
+</html>

@@ -1,0 +1,231 @@
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+
+}
+
+.qna-detail-container {
+       background-image: url("/dist/image/sc7.png");
+       background-size : cover;
+       background-repeat : no-repeat;
+        font-family:'S-CoreDream-3Light';
+       background-position : center;
+       z-index:1;
+}
+.qna-detail-box{
+    background-image: url("/dist/image/sc7.png");
+    background-size : cover;
+    background-repeat : no-repeat;
+
+    background-position : center;
+
+  max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color : gray;
+    border-radius:20px;
+    z-index:10;
+
+/* Title */
+
+.qna-detail-title {
+   margin-top: 30px;
+   font-size: 18px;
+   font-weight : 700;
+   color: white;
+}
+.qna-detail-writer {
+   margin-top: 30px;
+   font-size: 18px;
+   font-weight : 700;
+   color: white;
+}
+.qna-detail-content {
+   margin-top: 30px;
+   font-size: 18px;
+   font-weight : 700;
+   color: white;
+}
+
+
+.qna-detail-title input {
+    width: 100%;
+    padding: 10px;
+    padding-bottom:0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Input fields */
+.qna-detail-sec {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    line-height :top;
+    text-align:left;
+    font-size:24px;
+}
+
+.qna-detail-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height :top;
+}
+
+.qna-detail-isSecret {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    line-height :top;
+    border:none;
+    color : yellow;
+}
+
+.qna-detail-inc {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height:300px;
+
+}
+
+/* Read-only input fields */
+.qna-detail-input[disabled] {
+    background-color: #f2f2f2;
+}
+
+.qna-detail-Btn-Div{
+    padding:20px;
+}
+
+/* Buttons */
+.qna-detail-listBtn {
+    margin-right: 10px;
+    background-color: #8c8c8c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    height:35px;
+    line-height:20px;
+    font-size:16px;
+}
+
+
+.btn-secondary {
+    background-color: #8c8c8c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+     height:50px;
+     line-height:20px;
+      font-size:16px;
+}
+.qna-detail-ModBtn,
+.qna-detail-DelBtn{
+    background-color: #8c8c8c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    height : 35px;
+    font-size:16px;
+    line-height:20px;
+    float:left;
+}
+
+/* Modal */
+.modal-body {
+    padding: 20px;
+}
+
+/* Comments */
+.input-group {
+    margin-bottom: 20px;
+}
+
+#cmtListArea {
+    list-style: none;
+    padding: 0;
+}
+
+.list-group-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px; /* Increase font size */
+}
+
+.list-group-item .input-group {
+    margin: 0;
+}
+
+.list-group-item .fw-bold {
+    margin-right: 10px;
+}
+.cmzone{
+    background-color: black;
+    color:white;
+    padding:15px;
+    margin-top:20px;
+
+
+}
+.fw-bold{
+    background-color: black;
+    color:white;
+    padding-left:10px;
+    height:30px;
+    margin-top:20px;
+    margin-bottom:20px;
+    border:1px solid white;
+    border-left:none;
+    border-right: none;
+    border-top:none;
+
+
+
+}
+.cmzone-re{
+    float:right;
+    margin: 50px 10px 10px 10px;
+}
+.con-div{
+margin-top: 30px;
+     height:60px;
+     border:1px solid white;
+     border-left:none;
+     border-right: none;
+     border-top:none;
+
+}
+.del{
+     border:none;
+     margin-top: 50px;
+
+}
+.mod{
+    border:none;
+    margin-top: 50px;
+}
+}
+
+
+

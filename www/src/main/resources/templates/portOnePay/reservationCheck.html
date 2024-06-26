@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" th:href="@{/dist/css/reservationCheck.css}">
+<link rel="stylesheet" th:href="@{/dist/css/theme.css}">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+
+
+
+        <div class="reservationCheck">
+
+
+            <div class="checkTitle">
+            <h3 class="checkh3">예약 확인</h3>
+                <br>
+            <h4 class="checkh3">이메일로 발급받으신 주문번호를 넣어주세요.</h4>
+            </div>
+
+                <form action="/portOnePay/reservationCheck" method="post" id="postForm" class="input-form">
+                    <label for="merchantUid">주문번호 :</label>
+                    <input type="text" id="merchantUid" name="merchantUid" placeholder="이메일로 발급받으신 주문번호를 넣어주세요." required>
+
+                    <button type="submit" id="reservationBtn">검색</button>
+                </form>
+
+            <table class="board-table reservationTb">
+                <thead>
+                <tr th:if="${reservation != null}">
+                    <th>예약번호</th>
+                    <th>주문번호</th>
+                    <th>예약일</th>
+                    <th>예약시간</th>
+                    <th>테마명</th>
+                    <th>이메일</th>
+                    <th>예약자명</th>
+                    <th>번호</th>
+                    <th>예약 인원수</th>
+                    <th>가격</th>
+                    <th>결제일</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${reservation != null}">
+                        <td id="num" th:text="${reservation.reservationNum}"></td>
+                        <td id="uid" th:text="${reservation.merchantUid}"></td>
+                        <td id="date" th:text="${reservation.reservationDate}"></td>
+                        <td id="time" th:text="${reservation.reservationTime}"></td>
+                        <td th:text="${reservation.themeName}"></td>
+                        <td th:text="${reservation.email}"></td>
+                        <td th:text="${reservation.name}"></td>
+                        <td th:text="${reservation.phone}"></td>
+                        <td th:text="${reservation.reservationPeople}"></td>
+                        <td id="price" th:text="${reservation.reservationPrice}"></td>
+                        <td th:text="${reservation.reservationPaydate}"></td>
+                    </tr>
+                    <tr th:if="${reservation == null}">
+                        <h2 class="reservationSpan">해당 주문번호로 조회된 예약 정보가 없습니다.</h2>
+                    </tr>
+                </tbody>
+            </table>
+
+            <tr th:if="${reservation != null}">
+                <div class="refundBtn">
+                    <button class="refund-button" id="refund-button">예약취소</button>
+                <p class="text-danger">예약 취소는 예약일 24시간 전까지만 가능합니다.</p>
+                <div id="checkCancelRev"></div>
+                </div>
+
+
+
+            </tr>
+
+        </div>
+
+        <!--주의사항-->
+        <div class="notice-container">
+
+            <div class="title">
+                <span>NOTICE</span>
+                <p><h6>※주의사항※</h6></p>
+            </div> <!--title 디브 -->
+
+
+
+
+            <div class="box" style="text-align: center;">
+
+                <div class="noticebox" style="display: inline-block;">
+
+                    <div class="icon">
+
+                        <img id="noticeicon" th:src="@{/dist/image/notice04.png}">
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※실내흡연금지</p>
+                        <span id="notice_span">모두의 호흡기를 위해<br>
+             실내 흡연은 제한됩니다.<br>
+             위반시 과태료 10만원이 부과됩니다.<br>
+                        액상형, 궐련형 전자담배 또한 <br>
+                        담배에 해당됩니다.<br></span>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+
+                <div class="noticebox" style="display: inline-block;">
+                    <div class="icon">
+                        <img id="noticeicon" th:src="@{/dist/image/notice01.png}">
+
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※위험물품 반입금지</p>
+
+                        <span id="notice_span">고객님의 안전을 위해 <br> cctv 및
+                        인터폰, 무전기가 <br> 설치되어 있습니다.<br>
+                        라이터, 칼 등 위험물품은 게임 룸 안으로 <br>반입이 금지됩니다.</span>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+                <div class="noticebox" style="display: inline-block;">
+                    <div class="icon">
+                        <img id="noticeicon" th:src="@{/dist/image/notice02.png}">
+
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※촬영 금지</p>
+                        <span id="notice_span">
+                        컨텐츠 보호를 위해 사진촬영을 <br>
+                        금지하고 있습니다. <br>게임 입장 전
+                        핸드폰, 전자시계 등  <br>
+                        전자기기를 포함한 모든 소지품을 <br> 모두 보관함에 보관해주세요.</span>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+                <div class="noticebox" style="display: inline-block;">
+                    <div class="icon">
+                        <img id="noticeicon" th:src="@{/dist/image/notice03.png}">
+                    </div> <!--아이콘 디브-->
+
+                    <div class="noticetext">
+                        <p id="notice_p">※누설 금지</p>
+                        <span id="notice_span">아직 체험하지 않은
+                        분들을 위해<br> 문제공유는
+                        삼가 해주시기 바랍니다.<br>
+                        게임이 끝나도 매장에 <br> 다음 참가자분들이 대기중이니<br>
+                        자세한 게임 얘기를 삼가주세요!</span>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div> <!--주의사항박스 디브-->
+
+            </div> <!--박스디브-->
+
+            <div class="noticebottom">
+                <div class="bottom-text">
+                    <h3 id="nbt">※  예약 관련 사항  ※</h3>
+                </div>
+
+                <div id="not"><span class= id="nbs"> ◆  인원 및 시간 변경 시 매장으로 연락부탁드립니다.</span></div>
+                <div id="not"> <span id="nbs"> ◆  10분 전까지 꼭 매장에 와주세요. 지각 시 플레이 시간이 차감됩니다.</span></div>
+
+                <div id="not"><span  id="nbs"> ◆ 예약취소 및 변경은 예약일 24시간 전까지만 가능합니다.</span></div>
+                <br>
+                <br>
+
+                <div id="not"><span  id="nbs"> <h3 id="yellow">◆  당일예약 노쇼  ◆</h3><br> <h3 id="red">당일 노쇼 시 결제 금액 환불은 불가하며, 다음 번 예약이 제한될 수 있습니다.<h3>
+                  </span></div>
+
+            </div>
+
+        </div> <!--컨테이너 디브-->
+
+
+
+
+        <script th:src="@{/dist/js/reservationCheck.js}"></script>
+
+    </th:block>
+</th:block>

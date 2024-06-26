@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SecretCode.ezen.www.repository.QnaMapper">
+
+    <!-- 일반 게시글 가져오기 -->
+    <select id="getList" parameterType="SecretCode.ezen.www.domain.PagingVO" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna
+        WHERE is_notice = 'false'
+        <include refid="search"></include>
+        ORDER BY bno DESC
+        LIMIT #{pageStart}, #{qty}
+    </select>
+
+    <select id="myqna" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna
+        WHERE writer = #{nickName}
+    </select>
+
+
+    <select id="memberQna" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna
+        WHERE cmt_qty = 0
+    </select>
+
+    <!-- 공지글 가져오기 -->
+    <select id="getNoticeList" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna
+        WHERE is_notice = 'true'
+        ORDER BY bno DESC
+    </select>
+
+    <update id="updateCmtQty">
+        UPDATE qna
+        SET cmt_qty = (SELECT COUNT(*) FROM qnacomment WHERE bno = #{bno})
+        WHERE bno = #{bno}
+    </update>
+
+    <select id="getTotalCount" resultType="int">
+        select count(bno) from qna
+        WHERE is_notice = 'false'
+        <include refid="search"></include>
+    </select>
+
+    <select id="getSecretByBno" resultType="String" parameterType="long">
+        SELECT is_secret
+        FROM qna
+        WHERE bno = #{bno}
+    </select>
+
+    <select id="getQnaByBno" parameterType="long" resultType="SecretCode.ezen.www.domain.QnaVO">
+        SELECT * FROM qna WHERE bno = #{bno}
+    </select>
+
+    <insert id="register" parameterType="SecretCode.ezen.www.domain.QnaVO">
+        INSERT INTO qna (title, content, writer, is_secret, scpwd, is_notice)
+        VALUES (#{title}, #{content}, #{writer}, #{isSecret}, #{scpwd}, #{isNotice})
+    </insert>
+
+    <select id="getDetail" parameterType="int">
+        select * from qna where bno=#{bno}
+    </select>
+
+    <delete id="remove">
+        delete from qna where bno=#{bno}
+    </delete>
+
+    <update id="modify">
+        update qna set title=#{title}, content=#{content}
+        where bno=#{bno}
+    </update>
+
+    <update id="readCount">
+        update qna set read_count = read_count + 1
+        where bno = #{bno}
+    </update>
+
+    <select id="getCommentCount" resultType="int">
+        select count(*) from qnacomment where bno = #{bno}
+    </select>
+
+    <update id="updateCmtStatus">
+        update qna set cmt_qty = 0 where bno = #{bno}
+    </update>
+
+    <select id="myNickName" parameterType="String" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
+
+
+
+    <sql id="search">
+        <if test="type !=null">
+            <trim prefix="and (" suffix=")" suffixOverrides="or">
+                <foreach collection="typeToArray" item="type">
+                    <trim suffix="or">
+                        <choose>
+                            <when test="type=='t'.toString()">
+                                title like concat('%',#{keyword}, '%')
+
+                            </when> <when test="type=='w'.toString()">
+                            writer like concat('%',#{keyword}, '%')
+
+                        </when> <when test="type=='c'.toString()">
+                            content like concat('%',#{keyword}, '%')
+
+                        </when>
+                        </choose>
+                    </trim>
+                </foreach>
+
+            </trim>
+
+        </if>
+    </sql>
+</mapper>

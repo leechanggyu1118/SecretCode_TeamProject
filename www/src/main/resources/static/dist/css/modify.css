@@ -1,0 +1,69 @@
+       @charset "UTF-8";
+       @font-face {
+            font-family: 'S-CoreDream-3Light';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+       }
+
+       body{
+        font-family: 'S-CoreDream-3Light';
+         background-image: url("/dist/image/reg4.jpg");
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: cover;
+
+
+       }
+
+        .modifyContainer {
+        font-family: 'S-CoreDream-3Light';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 화면 전체 높이를 기준으로 가운데 정렬합니다 */
+            margin-bottom: 20px;
+        }
+        .card {
+            max-width: 27rem;
+        }
+        .card-body {
+            font-family: 'S-CoreDream-3Light';
+            text-align: center; /* 카드의 내용을 가운데 정렬합니다 */
+        }
+
+/*?*/
+.formMember{
+ margin-top: 30px;
+ margin-bottom: 30px;
+}
+
+        .titleModify {
+            font-family: 'S-CoreDream-3Light';
+            text-align: center; /* 텍스트를 가운데 정렬합니다. */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .titleModify h1 {
+            font-family: 'S-CoreDream-3Light';
+             margin-top: 30px;
+            margin-bottom: 20px; /* 헤딩과 링크 사이의 여백을 조정합니다. */
+            color: #fff;
+        }
+
+        .titleModify a {
+
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }

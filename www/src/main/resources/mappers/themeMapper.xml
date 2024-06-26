@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SecretCode.ezen.www.repository.ThemeMapper">
+
+    <select id="getTheme" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        SELECT * FROM theme;
+    </select>
+
+
+    <select id="getThemeDetails" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        SELECT * FROM theme t join  file f  on  t.uuid = f.uuid WHERE theme_num= #{themeNum}
+    </select>
+
+<select id="getReservThemes" resultType="SecretCode.ezen.www.domain.ThemeVO">
+    select * from theme t join  file f  on  t.uuid = f.uuid
+</select>
+    <select id="getThemes" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        select * from theme t join  file f  on  t.uuid = f.uuid
+    </select>
+
+    <!-- UUID로 테마 정보 조회 -->
+    <select id="findByUuid" resultType="SecretCode.ezen.www.domain.ThemeVO">
+        SELECT *
+        FROM theme
+        WHERE uuid = #{uuid}
+    </select>
+
+
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,419 @@
+@charset "UTF-8";
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+@font-face {
+    font-family: 'WavvePADO-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChosunCentennial';
+    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.body{
+margin:0;
+padding:0;
+}
+ .preserve-whitespace {
+     white-space: pre-wrap;
+        }
+
+.reservationTheme-container{
+ background-image: url("/dist/image/themeReservBack10.jpeg");
+  min-height:1000px;
+
+
+
+     margin: 0;
+     padding: 0;
+     /* border: 1px solid black; */
+
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position : center;
+}
+.reservAllTheme>span{
+    font-family: 'ChosunCentennial';
+    margin-top: 30px;
+    font-size:50px;
+    color: white;
+
+    text-align:center;
+    line-height:180px;
+
+}
+
+.reservTimebox{
+width:100%;
+height:150px;
+/* border: 1px solid yellow; */
+}
+.reservationTheme{
+width:100%;
+ /* height:600px; */
+/* border: 1px solid white; */
+display: inline-block;
+
+
+}
+  .reservImg{
+    width: 250px;
+    height: 350px;
+    /* border:1px solid blue; */
+     margin:50px 50px 50px 130px;
+     float: left;
+     align-items: center;
+      justify-content: center;
+     display: block;
+     
+}
+.reservImg>image{
+ width: 250px;
+    height: 350px;
+    display: block;
+    position:absolute;
+}
+
+.reservTextbox{
+    margin-top:50px;
+     /* border: 1px solid pink; */
+     width: 700px;
+     height:300px;
+     display: inline-block;
+     text-align: center;
+     align-items: center;
+     justify-content: center;
+     float: left;
+     display: block;
+ 
+}
+.reservTitle{
+    /* border: 1px solid seagreen; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    flex-direction: column;
+
+
+}
+
+.reservTitle>span{
+    font-family: 'ChosunCentennial';
+    font-size: 30px;
+    color:white;
+    margin-bottom:20px;
+
+    width:100%;
+    /* span 요소는 가로로 정렬 */
+    display: inline-block;
+
+}
+.reservTitle>p{
+    font-family: 'ChosunCentennial';
+    font-size: 15px;
+    color:white;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+
+
+
+}
+.reservTimeTable{
+ /* border: 1px solid red; */
+
+     float: left;
+     width: 700px;
+     height: 200px;
+     display: inline-block;
+     flex-wrap: wrap;
+     text-align: center;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .reservTimeTable:last-child{
+    margin-bottom:100px;
+ }
+
+.reservTimebox{
+   font-family: 'ChosunCentennial';
+   font-size:25px;
+   color:white;
+   float:left;
+
+
+
+}
+.date{
+    float: left;
+    display: contents;
+    line-height: 150px;
+    text-align: left;
+}
+.reservTimeTable>li{
+    width:21%; /* 4개씩 정렬하려면 총 너비의 25%를 각 항목에 할당 */
+    margin:10px;
+    height:60px;
+    background-color:black;
+    position: relative; /* 상대 위치 지정 */
+    display: inline-block; /* 인라인 블록으로 표시하여 한 줄에 정렬 */
+    width: 25%; /* 4개씩 정렬하려면 총 너비의 25%를 각 항목에 할당 */
+    text-align: center; /* 내부 요소 가운데 정렬을 위해 */
+}
+.time{
+    font-family: 'ChosunCentennial';
+
+    font-size: 20px;
+    color: white;
+    display: block; /* a 요소를 블록 레벨로 설정하여 li 요소의 크기에 맞게 확장 */
+    text-align:center;
+    position: absolute; /* 절대 위치 설정 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 전체 영역에 걸쳐야 함 */
+    height: 100%; /* 전체 영역에 걸쳐야 함 */
+    text-decoration: none; /* 링크에 밑줄 제거 */
+
+}
+.time>span{
+display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가운데 정렬 */
+    width: 100%;
+    text-align:center;
+    }
+
+.time>span:last-child{
+    font-size:15px;
+}
+
+.time {
+  
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+   
+  overflow: hidden;
+}
+
+.time:before, .time:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.25);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  transition-timing-function: ease;
+  -webkit-transform: translate(-13%, -190%) rotate(-30deg);
+  transform: translate(-13%, -190%) rotate(-30deg);
+  -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.time:hover:before, .time:hover:after {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.time:after {
+  -webkit-transition-delay: 0.2s !important;
+  transition-delay: 0.2s !important;
+}
+
+.reservationTheme:last-child{
+    margin-bottom:100px;
+}
+.yellowText{
+   color:#FFCC00;
+}
+
+
+
+
+
+@media screen and ( max-width : 600px){
+
+.body{
+margin:0;
+padding:0;
+}
+
+.reservationTheme-container{
+ background-image: url("/dist/image/themeReservBack10.jpeg");
+
+
+     margin: 0;
+     padding: 0;
+     /* border: 1px solid black; */
+     min-height:1500px;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position : center;
+}
+.reservAllTheme>span{
+    font-family: 'ChosunCentennial';
+    margin-top: 30px;
+    font-size:40px;
+    color: white;
+
+    text-align:center;
+    line-height:180px;
+}
+.reservTimebox{
+    width:100%;
+    height:300px;
+    /* border: 1px solid yellow; */
+}
+.reservationTheme{
+    width:100%;
+    /* height:600px; */
+    /* border: 1px solid white; */
+    display: inline-block;
+
+
+}
+  .reservImg{
+    width: 250px;
+    height: 350px;
+    /* border:1px solid blue; */
+     margin:130px 10px 100px 130px;
+     float: left;
+     align-items: center;
+     justify-content: center;
+     display: block;
+
+}
+
+.reservTextbox{
+    margin-top:10px;
+     /* border: 1px solid pink; */
+     width: 100%;
+     height:300px;
+     display: flex;
+     text-align: center;
+     align-items: center;
+     justify-content: center;
+     float: left;
+     display: block;
+
+}
+.reservTitle{
+    /* border: 1px solid seagreen; */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100px;
+}
+
+.reservTitle>span{
+    font-family: 'ChosunCentennial';
+    font-size: 30px;
+    color:white;
+}
+.reservTitle>p{
+    font-family: 'ChosunCentennial';
+      font-size: 15px;
+      color:white;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+}
+
+.reservTimeTable{
+ /* border: 1px solid red; */
+
+     float: left;
+     width: 100%;
+     height: 200px;
+     display: flex;
+     flex-wrap: wrap;
+     text-align: center;
+     align-items: center;
+     justify-content: center;
+ }
+  .reservationTheme:last-child{
+    margin-bottom:100px;
+  }
+ 
+.reservTimebox{
+   font-family: 'ChosunCentennial';
+   font-size:25px;
+   color:white;
+   float:left;
+
+
+}
+.date{
+    float: left;
+    display: contents;
+    line-height: 150px;
+    text-align: left;
+}
+.reservTimeTable>li{
+    width:25%; /* 4개씩 정렬하려면 총 너비의 25%를 각 항목에 할당 */
+    height:60px;
+
+     /* border: 1px solid orange; */
+
+
+    position: relative; /* 상대 위치 지정 */
+    display: inline-block; /* 인라인 블록으로 표시하여 한 줄에 정렬 */
+    width: 25%; /* 4개씩 정렬하려면 총 너비의 25%를 각 항목에 할당 */
+    text-align: center; /* 내부 요소 가운데 정렬을 위해 */
+}
+.reservTimeTable:last-child{
+    margin-bottom: 100px;
+}
+.time{
+    font-family: 'ChosunCentennial';
+
+    font-size: 20px;
+    color: white;
+    display: block; /* a 요소를 블록 레벨로 설정하여 li 요소의 크기에 맞게 확장 */
+    text-align:center;
+    position: absolute; /* 절대 위치 설정 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 전체 영역에 걸쳐야 함 */
+    height: 100%; /* 전체 영역에 걸쳐야 함 */
+    text-decoration: none; /* 링크에 밑줄 제거 */
+
+}
+.time>span{
+display: inline-block; /* span 요소를 인라인 블록으로 표시하여 가운데 정렬 */
+    width: 100%;
+    text-align:center;
+    }
+
+.time>span:last-child{
+    font-size:15px;
+}
+
+.reservationTheme:last-child{
+margin-bottom:100px;
+}
+.yellowText{
+    color:#FFCC00;
+}
+
+}

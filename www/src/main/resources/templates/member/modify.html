@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" th:href="@{/dist/css/modify.css}">
+
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <link rel="stylesheet" th:href="@{/dist/css/layout.css}">
+
+        <div class="titleModify">
+            <h1>회원수정</h1>
+            <a th:href="@{/member/myPage}">마이페이지로 돌아가기</a>
+        </div>
+        <div class="container-md modifyContainer">
+
+            <form action="/member/modify" method="post" class="formMember">
+
+
+                        <th:block sec:authorize="isAuthenticated()" >
+
+                            <div class="col" th:with="auth=${#authentication.getPrincipal()}">
+                                <div class="card text-bg-dark mb-3 border-dark mb-3" style="width: 25rem;">
+                                    <img th:src="@{/dist/image/myIcon11.png}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <input type="hidden"  name="email" th:value="${auth.mvo.email}">
+                                        <p class="card-title" >이메일 : [[${auth.mvo.email }]]</p>
+                                        <h5 class="card-title">비밀번호 : <input id="pwd" type="text" name="pwd" placeholder="변경하지 않을 경우 공백"></h5>
+                                        <div id="checkpwdvalue"></div>
+                                        <h5 class="card-title">비밀번호 : <input id="pwdCheck" type="text" placeholder="비밀번호 확인" disabled></h5>
+                                        <div id="checkpwd"></div>
+                                        <h5 class="card-title">이름 : <input  type="text" name="nickName" th:value="${auth.mvo.nickName}"></h5>
+                                        <h5 class="card-title">전화번호 : <input oninput="autoHyphen2(this)" maxlength="13" type="text" name="phone" th:value="${auth.mvo.phone}" id="phone"></h5>
+
+
+                                        <p class="card-text" >아이디 생성일 : [[${auth.mvo.regAt}]]</p>
+                                        <p class="card-text" >마지막 접속일 : [[${auth.mvo.lastLogin}]]</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </th:block>
+
+                <a><button type="submit" class="btn btn-outline-warning" id="updateBtn">수정</button></a>
+                <button type="button" class="btn btn-outline-danger" id="deleteBtn">회원삭제</button>
+            </form>
+        </div>
+        <script th:src="@{/dist/js/memberModify.js}"></script>
+
+
+    </th:block>
+</th:block>

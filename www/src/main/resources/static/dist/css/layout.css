@@ -1,0 +1,58 @@
+@charset "UTF-8";
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+.body{
+    margin:0;
+    padding:0;
+}
+.topBtn{
+    position: fixed; /* 화면에 고정 */
+    bottom: 100px; /* 아래에서 20px만큼 떨어진 위치 */
+    right: 50px; /* 오른쪽에서 20px만큼 떨어진 위치 */
+    z-index: 999; /* 다른 요소 위로 띄우기 */
+
+}
+
+#topBtn.show {
+    opacity: 1; /* 보이는 경우 투명도를 1로 설정하여 나타나게 함 */
+}
+
+
+
+.container-fluid{
+    margin: 0;
+    padding: 0;
+
+}
+.body{
+    font-family:'S-CoreDream-3Light';
+    font-size: 20px;
+    margin:0;
+    padding:0;
+}
+.nav-item1{
+    margin-bottom: 50px;
+}
+.navbar-brand{
+    margin:auto;
+    text-align: center;
+    margin-left:46%;
+}
+.nav-item{
+    font-family:'S-CoreDream-3Light';
+    font-size: 30px;
+    display: block;
+
+}
+.offcanvas-title{
+    color: rgb(188, 189, 191);
+}
+
+.layoutContainer{
+    margin-bottom: 70px;
+}
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/dist/css/adminReserv.css}">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+
+        <section class="reservationManagement">
+            <div class="pageTitle">
+                <div class="container">
+                    <h3>예약 관리</h3>
+                </div>
+            </div>
+
+            <div id="reservationSearch">
+                <div class="container">
+                    <div class="searchWindow">
+                        <form action="/member/adminReservation">
+                            <div class="searchWrap">
+                                <label for="search" class="blind"></label>
+                                <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                                <button type="submit" class="btn btnDark">검색</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reservationList">
+                <div class="container">
+                    <table class="reservationTable">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="thNum">번호</th>
+                            <th scope="col" class="thUser">예약자</th>
+                            <th scope="col" class="thTitle">테마</th>
+                            <th scope="col" class="thDate">날짜</th>
+                            <th scope="col" class="thTime">시간</th>
+
+                            <th scope="col" class="thStatus">상태</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>판타지 모험</td>
+                            <td>2024-05-26</td>
+                            <td>15:00</td>
+                            <td>나영우1</td>
+                            <td class="statusConfirmed">확정</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>공포 미로</td>
+                            <td>2024-05-26</td>
+                            <td>18:00</td>
+                            <td>나영우2</td>
+                            <td class="statusWait">대기</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>미스터리 퍼즐</td>
+                            <td>2024-05-27</td>
+                            <td>14:00</td>
+                            <td>나영우3</td>
+                            <td class="statusCancelled">취소</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>미스터리 퍼즐</td>
+                            <td>2024-05-27</td>
+                            <td>14:00</td>
+                            <td>나영우3</td>
+                            <td class="statusCancelled">취소</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>미스터리 퍼즐</td>
+                            <td>2024-05-27</td>
+                            <td>14:00</td>
+                            <td>나영우3</td>
+                            <td class="statusCancelled">취소</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>미스터리 퍼즐</td>
+                            <td>2024-05-27</td>
+                            <td>14:00</td>
+                            <td>나영우3</td>
+                            <td class="statusCancelled">취소</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>미스터리 퍼즐</td>
+                            <td>2024-05-27</td>
+                            <td>14:00</td>
+                            <td>나영우3</td>
+                            <td class="statusCancelled">취소</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>미스터리 퍼즐</td>
+                            <td>2024-05-27</td>
+                            <td>14:00</td>
+                            <td>나영우3</td>
+                            <td class="statusCancelled">취소</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </th:block>
+</th:block>

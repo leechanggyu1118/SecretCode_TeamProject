@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--<link rel="stylesheet" th:href="@{/dist/css/findEmailPwd.css}">-->
+<link rel="stylesheet" th:href="@{/dist/css/portOnePay.css}">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+
+
+            <div class="Paycontainer">
+                <h1> 예약하기 </h1>
+                <h4 class="payH4">고객 예약 정보 입력</h4>
+                <h6 class="payH6">예약자 이름, 연락처, 이메일, 인원수는 필수 입력사항입니다. </h6>
+                <form action="#" method="post">
+
+                    <div class="input-group">
+                        <label for="date">예약일:</label>
+                        <input type="date" th:value="${startDay}" id="date" name="date" class="PayGray" required readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="time">시간:</label>
+                        <input type="time" th:value="${selectedTime}" id="time" name="time" class="PayGray" required readonly>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="theme">테마명:</label>
+                        <input type="text" th:value="${themeName}" id="theme" name="theme" class="PayGray" required readonly>
+
+                    </div>
+
+
+                    <div class="input-group">
+                        <label for="name">예약자:</label>
+                        <input type="text" id="name" name="name" placeholder="예약자 이름을 입력해주세요." required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phone">연락처:</label>
+                        <input type="text" id="phone" name="phone" placeholder="휴대폰번호를 입력해주세요. ‘－’ 은 자동으로 입력됩니다." oninput="autoHyphen2(this)" maxlength="13" required>
+                    </div>
+
+
+                    <div class="input-group">
+                        <label for="email">이메일:</label>
+                        <input type="email" id="email" name="email" placeholder="수신가능한 이메일을 입력해주세요." required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="participants">인원수:</label>
+                        <br>
+                        <select id="participants" name="participants" required>
+                            <option value="1">1명</option>
+                            <option value="2">2명</option>
+                            <option value="3">3명</option>
+                            <option value="4">4명</option>
+                            <option value="5">5명</option>
+                            <option value="6">6명</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="price">가격:</label>
+                        <input type="number" id="price" name="price" class="PayGray" value="25000" readonly required>
+                    </div>
+
+
+                    <button type="button" th:onclick="requestPay()" class="payButton" id="payButton">결제하기</button>
+
+                    <h4 id="logdingCheck" class="logdingCheck">
+
+                        <span>E</span>
+                        <span>-</span>
+                        <span>M</span>
+                        <span>A</span>
+                        <span>I</span>
+                        <span>L</span>
+                        <span>발</span>
+                        <span>송</span>
+                        <span>중</span>
+                        <span>입</span>
+                        <span>니</span>
+                        <span>다</span>
+                        <span>.</span>
+                    </h4>
+                </form>
+            </div>
+
+
+        <script th:inline="javascript">
+            document.getElementById("payButton").style.display="";
+            document.getElementById("logdingCheck").style.display="none";
+        </script>
+
+
+
+        <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+        <script th:src="@{/dist/js/PortOnePay.js}"></script>
+    </th:block>
+</th:block>

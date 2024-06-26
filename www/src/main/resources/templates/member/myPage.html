@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en" id="ht" >
+<link rel="stylesheet" th:href="@{/dist/css/theme.css}">
+<link rel="stylesheet" th:href="@{/dist/css/myPage.css}">
+<link rel="stylesheet" th:href="@{/dist/js/memberModify.js}">
+
+<th:block th:replace="~{layout::setFragment(~{this::content})}">
+
+  <th:block th:fragment="content" >
+
+    <div class="myPagecontainer" id="top" style="text-align: center;">
+      <div class="container-md" style="text-align: center;">
+        <div class="myPageAllbox text-center">
+          <span>My Page</span>
+          <p></p>
+          <div class="myName">
+
+            <img th:src="@{/dist/image/myIcon11.png}" style="width:150px" height="150px">
+            <th:block th:if="${#authorization.expression('isAuthenticated()')}">
+              <h3 th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : myNickName}"> </h3>
+            </th:block>
+
+            <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                <a class="Mynav-link" th:href="@{/adminRegister/adminUser}">회원리스트 보러가기</a>
+            </th:block>
+
+         <!--   &lt;!&ndash; type을 받아와서 SecretCode인 사람만 보이게-->
+            <th:block th:if="${type eq 'SecretCode'}">
+              <a class="Mynav-link" th:href="@{/member/modify}">내 정보 수정하기</a>
+            </th:block>
+
+
+
+          </div>
+<!--          예약내역 확인  -->
+          <div class="myReservBox">
+              <div class="myReservTitle">
+
+                <!--관리자일때-->
+                <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                  <h3>회원 예약 현황</h3>
+                  <a class="reservationAtag" th:href="@{/portOnePay/adminPayList}" >회원 예약 취소하러 가기</a>
+                </th:block>
+
+                <!--회원일때-->
+                <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+                  <h3>나의 예약 현황</h3>
+                  <a class="reservationAtag" th:href="@{/portOnePay/reservationCheck}" >다른 이메일로 예약수신을 받았다면 클릭해주세요!</a>
+                </th:block>
+
+                <div class="myReserv">
+
+                  <table class="responsive-table board-table" style="text-align:center;">
+                    <thead>
+
+                    <!--회원일때-->
+                    <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+                    <tr style="text-align:center;">
+                      <th scope="col" >주문번호</th>
+                      <th scope="col" >예약일</th>
+                      <th scope="col" >예약시간</th>
+                      <th scope="col" >테마</th>
+                      <th scope="col" >예약자명</th>
+                      <th scope="col">예약인원</th>
+                      <th scope="col" >가격</th>
+                      <th scope="col" >결제일</th>
+                    </tr>
+                    </th:block>
+
+                    <!--관리자일때-->
+                    <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+
+                      <tr style="text-align:center;">
+                        <th scope="col" >주문번호</th>
+                        <th scope="col" >예약일</th>
+                        <th scope="col" >예약시간</th>
+                        <th scope="col" >테마</th>
+                        <th scope="col" >예약자명</th>
+                        <th scope="col">예약인원</th>
+                        <th scope="col" >가격</th>
+                        <th scope="col" >결제일</th>
+
+                      </tr>
+
+                    </th:block>
+
+
+
+                    </thead>
+                    <tbody>
+
+                    <!--회원일때-->
+                    <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+                      <th:block th:each="myReservation : ${myReservation}">
+                        <tr style="text-align:center;">
+                          <td th:text="${myReservation.merchantUid}"></td>
+                          <td th:text="${myReservation.reservationDate}"></td>
+                          <td th:text="${myReservation.reservationTime}"></td>
+                          <td th:text="${myReservation.themeName}"></td>
+                          <td th:text="${myReservation.name}"></td>
+                          <td th:text="${myReservation.reservationPeople}"></td>
+                          <td th:text="${myReservation.reservationPrice}"></td>
+                          <td th:text="${myReservation.reservationPaydate}"></td>
+                        </tr>
+                      </th:block>
+
+                      <tr th:if="${#lists.isEmpty(myReservation)}">
+                        <td colspan="8">
+                          <h2 class="nothingValue">결제/예약한 테마가 없습니다.</h2>
+                        </td>
+                      </tr>
+
+                    </th:block>
+
+                    <!--관리자일때-->
+                    <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                      <!--수정필요-->
+                      <th:block th:each="memberReservation : ${memberReservation}">
+                        <tr style="text-align:center;">
+                          <td th:text="${memberReservation.merchantUid}"></td>
+                          <td th:text="${memberReservation.reservationDate}"></td>
+                          <td th:text="${memberReservation.reservationTime}"></td>
+                          <td th:text="${memberReservation.themeName}"></td>
+                          <td th:text="${memberReservation.name}"></td>
+                          <td th:text="${memberReservation.reservationPeople}"></td>
+                          <td th:text="${memberReservation.reservationPrice}"></td>
+                          <td th:text="${memberReservation.reservationPaydate}"></td>
+                        </tr>
+                      </th:block>
+
+                      <tr th:if="${#lists.isEmpty(memberReservation)}">
+                        <td colspan="8">
+                          <h2 class="nothingValue">결제/예약된 테마가 없습니다.</h2>
+                        </td>
+                      </tr>
+
+                    </th:block>
+                    </tbody>
+                  </table>
+
+                </div>
+
+
+
+              </div>
+
+          </div>
+
+
+
+<!--          내가 쓴 qna -->
+          <div class="myQNABox">
+            <div class="myQNATitle">
+
+              <!--회원일때-->
+              <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+              <h3>나의 Q & A</h3>
+              </th:block>
+
+              <!--관리자일때-->
+              <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+              <h3>회신요망 회원 Q & A</h3>
+              </th:block>
+
+
+              <div class="myQNA">
+                <table class="responsive-table board-table" style="text-align:center;">
+                  <thead>
+
+                  <!--회원일때-->
+                  <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+                  <tr style="text-align:center;">
+                    <th scope="col" >제목</th>
+                    <th scope="col" >작성자</th>
+                    <th scope="col" >내용</th>
+                    <th scope="col" >작성일</th>
+                    <th scope="col" >조회수</th>
+                    <th scope="col" >답변 상태</th>
+                  </tr>
+                  </th:block>
+
+                  <!--관리자일때-->
+                  <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <tr style="text-align:center;">
+                      <th scope="col" >제목</th>
+                      <th scope="col" >작성자</th>
+                      <th scope="col" >내용</th>
+                      <th scope="col" >작성일</th>
+                      <th scope="col" >조회수</th>
+<!--                      <th scope="col" >답변 상태</th>-->
+                    </tr>
+                  </th:block>
+
+
+                  </thead>
+                  <tbody>
+
+                  <!--회원일때-->
+                  <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+                    <th:block th:each="myqna : ${myqna}">
+                      <tr style="text-align:center;">
+                        <td><a class="goTomyLink" th:href="@{|/qna/detail?bno=${myqna.bno}|}" th:text="${myqna.title}"></a></td>
+                        <td th:text="${myqna.writer}"></td>
+                        <td th:text="${myqna.content}"></td>
+                        <td th:text="${myqna.regDate}"></td>
+                        <td th:text="${myqna.readCount}"></td>
+                        <td th:text="${myqna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></td>
+                      </tr>
+                    </th:block>
+
+                    <tr th:if="${#lists.isEmpty(myqna)}">
+                      <td colspan="6">
+                        <h2 class="nothingValue">작성한 Q & A 가 없습니다.</h2>
+                      </td>
+                    </tr>
+
+                  </th:block>
+
+                  <!--관리자일때-->
+                  <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+
+                    <th:block th:each="memberQna : ${memberQna}">
+                      <tr style="text-align:center;">
+                        <td><a class="goTomyLink" th:href="@{/adminRegister/adminBoard}" th:text="${memberQna.title}" style="width : 16%;"></a></td>
+                        <td th:text="${memberQna.writer}" style="width : 7%;"></td>
+                        <td th:text="${memberQna.content}" style="width : 60%;"></td>
+                        <td th:text="${memberQna.regDate}" style="width : 10%;"></td>
+                        <td th:text="${memberQna.readCount}" style="width : 7%;"></td>
+<!--                        <td th:text="${memberQna.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></td>-->
+                      </tr>
+                    </th:block>
+
+                    <tr th:if="${#lists.isEmpty(memberQna)}">
+                      <td colspan="6">
+                        <h2 class="nothingValue">답변이 필요한 Q & A 가 없습니다.</h2>
+                      </td>
+                    </tr>
+
+
+                  </th:block>
+
+
+                  </tbody>
+
+
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+
+          <th:block sec:authorize="!hasAnyAuthority('ROLE_ADMIN')">
+          <!--          내가 쓴 리뷰 -->
+              <div class="myReviewBox">
+                <div class="myReviewTitle">
+                  <h3>나의 리뷰</h3>
+                  <div class="myReview">
+                    <table class="responsive-table board-table" style="text-align:center;">
+                      <thead>
+                      <tr style="text-align:center;">
+                        <th scope="col" >제목</th>
+                        <th scope="col" >작성자</th>
+                        <th scope="col" >내용</th>
+                        <th scope="col" >작성일</th>
+                        <th scope="col" >테마</th>
+                        <th scope="col" >공감수</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+
+                      <th:block th:each="myreview : ${myreview}">
+                        <tr style="text-align:center;">
+                          <td><a class="goTomyLink" th:href="@{/review/list}" th:text="${myreview.title}"></a></td>
+                          <td th:text="${myreview.writer}"></td>
+                          <td th:text="${myreview.content}" style="width:50%"></td>
+                          <td th:text="${myreview.regDate}"></td>
+                          <td th:text="${myreview.themeName}"></td>
+                          <td th:text="${myreview.readCount}"></td>
+                        </tr>
+                      </th:block>
+
+                      <tr th:if="${#lists.isEmpty(myreview)}">
+                        <td colspan="6">
+                          <h2 class="nothingValue">작성한 리뷰가 없습니다.</h2>
+                        </td>
+                      </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          </th:block>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+    document.getElementById('phone').addEventListener('input', function (e) {
+    var phone = e.target.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+    var len = phone.length;
+    if (len < 4) {
+    e.target.value = phone;
+    } else if (len < 7) {
+    e.target.value = phone.substring(0, 3) + '-' + phone.substring(3);
+    } else if (len < 11) {
+    e.target.value = phone.substring(0, 3) + '-' + phone.substring(3, 6) + '-' + phone.substring(6);
+    } else {
+    e.target.value = phone.substring(0, 3) + '-' + phone.substring(3, 7) + '-' + phone.substring(7, 11);
+    }
+    });
+   </script>
+  </th:block>
+
+</th:block>

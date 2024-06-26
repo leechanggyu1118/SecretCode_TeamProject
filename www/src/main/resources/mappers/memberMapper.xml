@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SecretCode.ezen.www.repository.MemberMapper">
+
+    <insert id="insert">
+        INSERT INTO member(email, pwd, nick_name, phone, type)
+        VALUES(#{email},#{pwd},#{nickName},#{phone}, #{type})
+    </insert>
+
+    <insert id="insertAuth">
+        INSERT INTO auth_member VALUES (#{email}, 'ROLE_USER')
+    </insert>
+
+    <insert id="insertSocialAuth">
+        INSERT INTO auth_member VALUES (#{email}, 'ROLE_SOCIAL')
+    </insert>
+
+    <select id="selectEmail" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member WHERE email = #{email}
+    </select>
+
+    <select id="checkSocialLogin" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member WHERE email = #{email}
+    </select>
+
+
+    <select id="selectAuths" resultType="SecretCode.ezen.www.domain.AuthVO">
+        SELECT * FROM auth_member WHERE email = #{email}
+    </select>
+
+    <select id="getList" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member
+
+    </select>
+    <update id="memberModify">
+        UPDATE member SET phone = #{phone}, nick_name = #{nickName}, last_login = NOW() WHERE email = #{email}
+    </update>
+
+    <update id="memberPwdModify">
+        UPDATE member SET phone = #{phone}, nick_name = #{nickName}, pwd = #{pwd}, last_login = NOW() WHERE email = #{email}
+    </update>
+
+    <update id="changePwd">
+        UPDATE member SET pwd = #{pwd} WHERE email = #{email}
+    </update>
+
+    <delete id="memberAuthDelete">
+        DELETE FROM auth_member WHERE email = #{email}
+    </delete>
+    <delete id="memberDelete">
+        DELETE FROM member WHERE email = #{email}
+    </delete>
+
+    <select id="getUser" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member WHERE email = #{email}
+    </select>
+
+    <select id="checkEmail" resultType="int">
+        SELECT COUNT(*) FROM member WHERE email = #{email}
+    </select>
+
+    <select id="phoneCheck" resultType="String">
+        SELECT email FROM member WHERE phone = #{phone} and nick_name = #{nickName}
+    </select>
+
+    <select id="pwdReturnCheck" resultType="String">
+        SELECT email FROM member WHERE phone = #{phone} and nick_name = #{nickName} and email = #{email}
+    </select>
+
+
+    <delete id="deleteUser">
+        delete from member where email = #{email}
+    </delete>
+
+    <select id="getNickName" resultType="SecretCode.ezen.www.domain.MemberVO">
+        SELECT * FROM member WHERE email like concat('%', #{email}, '%')
+
+    </select>
+
+    <select id="getType" resultType="String">
+        SELECT type FROM member WHERE email = #{name}
+    </select>
+
+    <select id="myNickName" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
+
+
+
+
+
+</mapper>

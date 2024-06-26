@@ -1,0 +1,148 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+}
+
+body, table {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    font-family: 'S-CoreDream-3Light';
+}
+
+.userList {
+    font-family: 'S-CoreDream-3Light';
+    text-align: center;
+     margin-top:100px;
+     margin-bottom:50px;
+}
+
+.container {
+    width: 80%;
+    margin-top:50px;
+    margin: 0 auto;
+}
+
+.page-title {
+    margin-top:50px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-title h2 {
+    font-family: 'S-CoreDream-3Light';
+    font-size: 28px;
+    color: #333;
+    font-weight: 400;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.filterContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filterContainer form {
+    display: flex;
+    align-items: center;
+}
+
+.filterContainer .searchInput {
+    width: 250px;
+    height: 40px;
+    padding: 7px 14px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.filterContainer .searchInput:focus {
+    border-color: #333;
+    outline: none;
+}
+
+.filterContainer .qna-list-select {
+    width: 120px;
+    height: 40px;
+    padding: 7px 14px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.filterContainer .searchButton {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 14px;
+    background: #555;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.filterContainer .searchButton:hover, .filterContainer .searchButton:focus {
+    background: #373737;
+}
+
+.board-table {
+    width: 100%;
+    font-size: 13px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.board-table th, .board-table td {
+    padding: 14px 0;
+    text-align: center;
+}
+
+.board-table th {
+    font-weight: normal;
+}
+
+.board-table .th-num {
+    width: 100px;
+}
+
+.board-table .th-date {
+    width: 200px;
+}
+
+.board-table tbody td {
+    border-top: 1px solid #e7e7e7;
+}
+
+.board-table a {
+    color: #333;
+    line-height: 1.4;
+    display: inline-block;
+    word-break: break-all;
+    vertical-align: middle;
+}
+
+.board-table a:hover {
+    text-decoration: underline;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+.responsive-table{
+    margin-bottom:50px;
+
+}

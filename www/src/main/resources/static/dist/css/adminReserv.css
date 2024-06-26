@@ -1,0 +1,96 @@
+@charset "UTF-8";
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+
+
+/* 전체 페이지 스타일 */
+.reservationManagement {
+    margin: 50px auto;
+    max-width: 1500px;
+}
+
+.pageTitle {
+    margin : 20px;
+    padding: 20px;
+    text-align : center;
+}
+
+.pageTitle h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* 검색 영역 스타일 */
+#reservationSearch {
+    margin-top: 20px;
+}
+
+.searchWindow {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.searchWrap {
+    display: flex;
+}
+
+.searchWrap input[type="search"] {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.searchWrap button {
+    padding: 10px 20px;
+    border: none;
+    background-color: black;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+/* 예약 리스트 영역 스타일 */
+#reservationList {
+    margin-top: 20px;
+}
+
+.reservationTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reservationTable th,
+.reservationTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.reservationTable th {
+    background-color: #f5f5f5;
+}
+
+/* 예약 상태에 따른 색상 */
+.statusConfirmed {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.statusWait {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.statusCancelled {
+    background-color: #dc3545;
+    color: #fff;
+}

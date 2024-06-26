@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SecretCode.ezen.www.repository.ReviewMapper">
+
+
+    <insert id="register" parameterType="SecretCode.ezen.www.domain.ReviewVO">
+        INSERT INTO review (theme, title, writer, content, rating, uuid,theme_name)
+        VALUES (#{theme}, #{title}, #{writer}, #{content}, #{rating}, #{uuid},#{themeName})
+    </insert>
+
+
+
+
+    <select id="getTotalCount" resultType="int">
+
+        select count(bno) from review
+
+
+    </select>
+
+    <select id="getList" parameterType="SecretCode.ezen.www.domain.PagingVO" resultType="SecretCode.ezen.www.domain.ReviewVO">
+        SELECT * FROM review r JOIN file f ON r.uuid = f.uuid
+        ORDER BY r.bno DESC LIMIT #{pageStart},#{qty}
+    </select>
+
+    <select id="getListByTheme" parameterType="java.util.Map" resultType="SecretCode.ezen.www.domain.ReviewVO">
+        SELECT r.bno, r.title, r.writer, r.content, r.rating, r.uuid, r.theme_name, f.save_dir, f.file_name
+        FROM review r
+        JOIN file f ON r.uuid = f.uuid
+        WHERE r.theme_name = #{themeName}
+        ORDER BY r.bno DESC
+        LIMIT #{pgvo.pageStart}, #{pgvo.qty}
+    </select>
+
+    <select id="getTotalCountByTheme" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(*)
+        FROM review r
+        WHERE r.theme_name = #{themeName}
+    </select>
+
+
+
+    <select id="myreview" resultType="SecretCode.ezen.www.domain.ReviewVO">
+        SELECT * FROM review
+        WHERE writer = #{nickName}
+    </select>
+
+    <!-- 좋아요 수 증가 및 isLiked 업데이트 -->
+    <update id="incrementLikeCount" parameterType="int">
+        <!-- 좋아요 수 증가 -->
+        UPDATE review
+        SET read_count = read_count + 1,
+        is_liked = 1
+        WHERE bno = #{bno}
+    </update>
+
+    <!-- 좋아요 수 조회 -->
+    <select id="getReadCount" resultType="int" parameterType="int">
+        SELECT read_count
+        FROM review
+        WHERE bno = #{bno}
+    </select>
+
+
+
+    <!-- 좋아요 수 감소 및 isLiked 업데이트 -->
+    <update id="decrementLikeCount" parameterType="int">
+        <!-- 좋아요 수 감소 -->
+        UPDATE review
+        SET read_count = read_count - 1,
+        is_liked = 2
+        WHERE bno = #{bno}
+    </update>
+    <!-- 수정 쿼리 -->
+    <update id="modify" parameterType="SecretCode.ezen.www.domain.ReviewVO">
+        UPDATE review
+        SET title = #{title},
+        content = #{content}
+        WHERE bno = #{bno}
+    </update>
+
+    <!-- 조회 쿼리 -->
+    <select id="findById" parameterType="int" resultType="SecretCode.ezen.www.domain.ReviewVO">
+        SELECT bno, title, content, writer, regDate
+        FROM review
+        WHERE bno = #{bno}
+    </select>
+
+    <!-- 삭제 쿼리 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM review
+        WHERE bno = #{bno}
+    </delete>
+
+    <select id="myNickName" resultType="String">
+        SELECT nick_name FROM member WHERE email = #{email}
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

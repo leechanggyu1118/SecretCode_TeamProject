@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->
+<title>Q & A 상세</title>
+<link rel="stylesheet" th:href="@{/dist/css/qnaDetail.css}">
+
+
+<th:block th:replace="~{layout::setFragment(~{this::content})}">
+
+    <th:block th:fragment="content" >
+
+
+        <form action="/qna/modify" method="post" id="modForm">
+            <th:block th:with="qvo=${qvo}">
+                <th:block th:if="${qvo != null}">
+
+
+
+
+                <div class="qna-detail-container">
+                    <div class="qna-detail-box">
+
+                        <div class="qna-detail-isSecret" th:if="${qvo.isSecret}">
+                            <!-- 비밀글 -->
+                            <span class="qna-detail-sec" id="isSecret" name="isSecret">비밀글</span>
+                        </div>
+
+
+                        <div class="qna-detail-isSecret" th:if="${not qvo.isSecret}">
+                            <!-- 공개글 -->
+                            <span class="qna-detail-sec" id="isSecret" name="isSecret" >공개글</span>
+                        </div>
+                        <hr>
+
+                        <div class="qna-detail-readCount" style="font-size:22px; font-weight:700; color:white;
+"  >
+                            조회수:
+                            <span class="qna-detail-re" style="color:white; font-size:22px;"
+                                  id="readCount" name="readCount" th:text="${qvo.readCount}"></span>
+                        </div>
+                        <hr>
+
+                        <div class="qna-detail-cmtQty" style="font-size:22px; font-weight:700;">
+
+                            <span class="qna-detail-cm" style="color:white; font-size:22px;"
+                                  th:unless="${qvo.isNotice}"
+                                  th:text="${qvo.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"></span>
+                        </div>
+
+
+                        <hr>
+
+               <!--     <div class="qna-detail-top">
+
+                        <h3>Q & A 상세</h3>
+                    </div> &lt;!&ndash;!&#45;&#45;qna-detail-title-->
+
+
+
+
+
+                        <div class="qna-detail-bno">
+                         <input type="hidden" name="bno" th:value="${qvo.bno}">
+                        </div>
+
+                <div class="qna-detail-title">
+                   제목  <input type="text" class="qna-detail-input"
+                           id="title" name="title"
+                              th:readonly="${NickName != qvo.writer or NickName == '비회원'}"
+                           th:value="${qvo.title}" >
+                </div>
+
+
+                    <div class="qna-detail-writer">
+                       작성자 <input type="text" class="qna-detail-input"
+                               id="writer" name="writer"
+                                  th:readonly="${NickName != qvo.writer or NickName == '비회원'}"
+                               th:value="${qvo.writer}" disabled>
+                    </div>
+
+                    <div class="qna-detail-content">
+                  내용
+                        <textarea type="text" class="qna-detail-inc"
+                                  name="content" id="content"
+                                  th:readonly="${NickName != qvo.writer or NickName == '비회원'}"
+                                  th:text="${qvo.content}">
+</textarea>
+
+                    </div>
+                        <div id="modDiv"></div>
+                          <div class="qna-detail-Btn-Div">
+                        <button type="button" id="listBtn" class="qna-detail-listBtn">리스트</button>
+                              <button type="button" id="modBtn" class="qna-detail-ModBtn" th:hidden="${NickName != qvo.writer or NickName == '비회원'}">수정하기</button>
+
+                              <button type="button" id="delBtn" class="qna-detail-DelBtn" th:hidden="${NickName != qvo.writer  or NickName == '비회원'}">삭제하기</button>   </div>
+
+
+                        <!--comment line-->
+
+                        <div class="input-group mb-3">
+                            <!-- 작성자 이름 -->
+
+                            <span class="input-group-text" id="cmtWriter">
+                        <!-- 작성자 이름 -->
+                        <th:block th:if="${#authorization.expression('isAuthenticated()')}">
+                            <span th:text="${#authorization.expression('hasRole(''ROLE_ADMIN'')') ? '관리자' : NickName}"></span>
+                        </th:block>
+                        <th:block th:unless="${#authorization.expression('isAuthenticated()')}">
+                            <span>비회원</span>
+                        </th:block>
+                    </span>
+
+                            <input
+                                    type="text" id="cmtText" class="form-control"
+                                    placeholder="댓글을 입력하세요." aria-label="Username"
+                                    aria-describedby="basic-addon1">
+                            <button type="button" id="cmtAddBtn" class="btn btn-secondary">댓글
+                                등록</button>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <ul class="list-group list-group-flush" id="cmtListArea">
+                            <li class="list-group-item" style="height: 50px;">
+                                <div class="input-group mb-3">
+                                    <div class="fw-bold">Writer</div>
+                                    content
+
+                                </div> <span class="badge rounded-pill text-bg-info">regdate</span>
+                            </li>
+                        </ul>
+
+
+
+        </form>
+
+
+
+        <form action="/qna/remove" method="post" id="delForm" style="display:none">
+            <input type="hidden" name="bno" th:value="${qvo.bno}">
+        </form>
+
+        <!-- 댓글 더보기 버튼 -->
+        <div>
+            <button type="button" id="moreBtn" data-page="1"
+                    class="btn btn-outline-success" style="visibility: hidden" >더보기
+                </button>
+        </div>
+
+
+
+                    </div>
+
+                </th:block>
+            </th:block>
+
+
+
+
+
+            </div> <!--qna-detail-container-->
+
+
+
+        <!-- 모달  -->
+        <div class="modal" id="myModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modWriter">Writer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" id="cmtTextMod" class="form-control">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary"
+                                data-bs-dismiss="modal" id="cmtModBtn">modify</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script th:inline="javascript">
+            const bnoVal =[[${qvo.bno}]];
+            console.log(bnoVal);
+
+        </script>
+
+        <script th:src="@{/dist/js/QnaComment.js}"></script>
+        <script th:src="@{/dist/js/QnaDetail.js}"></script>
+
+        <script>
+
+            spreadCommentList(bnoVal);
+
+        </script>
+
+
+
+    </th:block>
+</th:block>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/dist/css/adminUser.css}">
+</head>
+<body>
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <div class="userContainer">
+            <h2 class="userList">회원관리 리스트</h2>
+
+            <div class="container-md">
+                <div class="filterContainer">
+                    <form action="/adminRegister/adminUser" method="get">
+                        <input type="text" name="keyword" placeholder="검색" class="searchInput" th:value="${keyword}">
+                        <select name="auth" class="searchSelect">
+                            <option value="선택" th:selected="${auth == null or auth == '선택'}">선택</option>
+                            <option th:value="ROLE_ADMIN" th:selected="${auth == 'ROLE_ADMIN'}">관리자</option>
+                            <option th:value="ROLE_USER" th:selected="${auth == 'ROLE_USER'}">일반 사용자</option>
+                            <option th:value="ROLE_SOCIAL" th:selected="${auth == 'ROLE_SOCIAL'}">소셜 계정</option>
+                        </select>
+                        <button type="submit" class="searchButton">검색</button>
+                    </form>
+                </div>
+
+                <table class="responsive-table" >
+                    <thead>
+                    <tr>
+                        <th scope="col" style="width : 30%;">이메일</th>
+                        <th scope="col" style="width : 7%;">닉네임</th>
+                        <th scope="col" style="width : 10%;">가입 날짜</th>
+                        <th scope="col" style="width : 10%;">최근 로그인 기록</th>
+                        <th scope="col">전화번호</th>
+                        <th scope="col">권한 여부</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:if="${#lists.isEmpty(list)}">
+                        <tr>
+                            <td colspan="8" style="text-align:center;">검색 결과가 없습니다.</td>
+                        </tr>
+                    </th:block>
+                    <th:block th:each="member : ${list}">
+                        <tr th:attr="data-email=${member.email}">
+                            <td data-title="Email" class="emailCell">[[${member.email}]]</td>
+                            <td data-title="NickName">[[${member.nickName}]]</td>
+                            <td data-title="RegAt">[[${member.regAt}]]</td>
+                            <td data-title="LastLogin">[[${member.lastLogin}]]</td>
+                            <td data-title="Phone">[[${member.phone}]]</td>
+                            <td data-title="Role">
+                                <th:block th:if="${member.admin}">
+                                    관리자
+                                </th:block>
+                                <th:block th:unless="${member.admin}">
+                                    일반 사용자
+                                </th:block>
+                            </td>
+                            <td>
+                                <select class="roleAction">
+                                    <option value="grant">권한 부여</option>
+                                    <option value="revoke">권한 회수</option>
+                                </select>
+                            </td>
+                            <td><button type="button" class="authBtn">선택</button></td>
+                            <td><button type="button" class="delBtn">해방</button></td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li th:if="${ph.prev}" class="page-item">
+                            <a class="page-link" th:href="@{/adminRegister/adminUser(pageNo=${ph.startPage-1}, qty=${ph.pgvo.qty}, type=${ph.pgvo.type}, keyword=${ph.pgvo.keyword}, auth=${ph.pgvo.auth})}" aria-label="Previous">
+                                <span aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        <th:block th:each="page : ${#numbers.sequence(ph.startPage, ph.endPage)}">
+                            <li class="page-item" th:classappend="${ph.pgvo.pageNo == page} ? 'active' : ''" aria-current="page">
+                                <a class="page-link" th:href="@{/adminRegister/adminUser(pageNo=${page}, qty=${ph.pgvo.qty}, type=${ph.pgvo.type}, keyword=${ph.pgvo.keyword}, auth=${ph.pgvo.auth})}">[[${page}]]</a>
+                            </li>
+                        </th:block>
+                        <li th:if="${ph.next}" class="page-item">
+                            <a class="page-link" th:href="@{/adminRegister/adminUser(pageNo=${ph.endPage+1}, qty=${ph.pgvo.qty}, type=${ph.pgvo.type}, keyword=${ph.pgvo.keyword}, auth=${ph.pgvo.auth})}" aria-label="Next">
+                                <span aria-hidden="true"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <script th:src="@{/dist/js/adminUser.js}"></script>
+        <script th:src="@{/dist/js/adminAuthUser.js}"></script>
+    </th:block>
+</th:block>
+</body>
+</html>

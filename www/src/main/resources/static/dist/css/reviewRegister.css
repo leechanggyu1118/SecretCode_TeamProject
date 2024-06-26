@@ -1,0 +1,250 @@
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 중앙 정렬을 위한 추가 */
+    width: 100%;
+    height: 100%; /* 전체 화면 높이를 채우기 위해 변경 */
+    /*background-image: url("/dist/image/sc1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;*/
+    background-color:black;
+}
+
+
+
+.review-theme-box {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+
+    margin: auto;
+    padding: 30px 30px 60px 30px;
+    margin-top: 90px;
+
+    box-sizing: border-box;
+}
+
+.review-theme-img-div {
+    width: 100%;
+    max-width: 35%;
+    height: 100%;
+    border: 1px solid white;
+    float: left;
+    box-sizing: border-box;
+}
+
+.review-theme-text {
+    width: 100%;
+    max-width: 65%;
+    height: 100%;
+    border: 1px solid white;
+    float: right;
+    text-align: center;
+    font-size: 19px;
+    color: white;
+     font-family: 'S-CoreDream-3Light';
+    box-sizing: border-box;
+    line-height:95px;
+}
+
+.review-theme-img {
+   width: 100%;
+   height: 100%;
+
+}
+.select-box {
+    width: 100%;
+    max-width: 300px; /* 선택 사항: select 박스의 최대 너비 지정 */
+    margin: 10px auto; /* 선택 사항: 가운데 정렬 및 여백 설정 */
+    position: relative; /* 선택 사항: 상대 위치 설정 */
+}
+
+.select-box select {
+    width: 100%;
+    text-align:center;
+    padding:3px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* 테두리 스타일 및 색상 설정 */
+    border-radius: 4px; /* 테두리의 둥근 정도 설정 */
+    background-color: #fff; /* 배경색 설정 */
+    font-size: 16px; /* 폰트 크기 설정 */
+    font-family: 'S-CoreDream-3Light';
+    -webkit-appearance: none; /* 웹킷 브라우저에 기본 스타일 적용 방지 */
+    -moz-appearance: none; /* 모질라 브라우저에 기본 스타일 적용 방지 */
+    appearance: none; /* 기본 스타일 적용 방지 */
+    cursor: pointer; /* 커서 스타일 설정 */
+}
+
+.select-box select:focus {
+    outline: none; /* 포커스 시 테두리 제거 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 포커스 시 그림자 효과 추가 */
+}
+
+.select-box button {
+    padding: 12px 20px; /* 내부 여백 설정 */
+    border: none; /* 테두리 없음 */
+    background-color: #007bff; /* 배경색 설정 */
+    color: #fff; /* 글자색 설정 */
+    border-radius: 4px; /* 둥근 테두리 설정 */
+    cursor: pointer; /* 커서 스타일 설정 */
+    margin-left: -2px; /* 선택 사항: 버튼과 select 박스 사이의 간격 조정 */
+}
+
+.select-box button:hover {
+    background-color: #0056b3; /* 호버 시 배경색 변경 */
+}
+.review-theme{
+height:100%;
+
+}
+
+
+.review-title{
+text-align:center;
+color:white;
+margin-top:30px;
+margin-bottom:30px;
+font-size:50px;
+}
+
+.review-notice {
+     border:1px solid white;
+
+
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+    text-align: center;
+    margin-top: 50px;
+
+
+}
+
+
+.review-notice-text {
+    font-family: 'S-CoreDream-3Light';
+    font-size: 20px;
+    color: red;
+    text-align:center;
+}
+
+ .review-register {
+     display: flex;
+     flex-direction: column;
+    width: 100%;
+        max-width: 750px;
+     margin: auto;
+     padding: 20px;
+     margin-top: 100px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     border-radius: 5px;
+   /*  background-image: url("/dist/image/regdark2.jpg");
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-position: center;*/
+         border:1px solid white;
+    font-family: 'S-CoreDream-3Light';
+
+ }
+
+ #text-div {
+     font-size: 18px;
+     margin-top: 10px;
+     color: white;
+ }
+
+ .writer-div, .content-div, .title-div {
+     width: 100%;
+     margin: 10px 0;
+ }
+ .theme-div{
+  width: 100%;
+      margin: 10px 0;
+      color:red;
+      font-size: 32px;
+
+ }
+ #title{
+  width: 100%;
+
+ }
+
+
+
+
+
+ #writer, #text {
+    width: 100%;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 16px;
+     box-sizing: border-box;
+ }
+ .review-img-title{
+ font-size: 26px;
+ color:red;
+ }
+
+ .star {
+             font-size: 24px;
+             cursor: pointer;
+             color: #ccc;
+             margin: 0 5px;
+         }
+
+         .star.selected {
+             color: #ffc107; /* 선택된 별의 색상 */
+         }
+
+
+ input[type="hidden"] {
+     display: none;
+ }
+
+ @media (max-width: 600px) {
+     .review-register {
+         padding: 10px;
+     }
+
+     #writer, #text {
+         font-size: 14px;
+     }
+     .select-box{
+
+     }
+
+     /* themeSelect 스타일 */
+     select-box>.themeSelect {
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       appearance: none;
+       padding: 8px; /* 선택 사항: 패딩 조정 */
+       border: 1px solid #ccc; /* 선택 사항: 테두리 스타일 및 색상 설정 */
+       border-radius: 4px; /* 선택 사항: 테두리 반경 조정 */
+       background-color: white; /* 선택 사항: 배경색 설정 */
+       cursor: pointer;
+     }
+
+     /* themeSelect 활성 상태 스타일 */
+     select-box>.themeSelect:focus {
+       border-color: #007bff; /* 선택 사항: 활성 상태일 때 테두리 색상 변경 */
+       box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 선택 사항: 포커스 시 그림자 효과 추가 */
+     }
+
+
+
+
+
+
+ }

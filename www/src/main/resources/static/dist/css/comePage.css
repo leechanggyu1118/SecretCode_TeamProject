@@ -1,0 +1,170 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'S-CoreDream-3Light', sans-serif;
+    background-color: #828282;
+}
+
+.pageHeader {
+    padding: 40px 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+}
+
+.mapContainer {
+    position: relative;
+    width: 960px;
+    height: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.mapInfo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px #000000;
+    z-index: 1;
+}
+
+.infoSection {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.infoSection table {
+    width: 960px;
+    border-collapse: collapse;
+}
+
+.infoSection td {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.infoSection tr:first-child td {
+    border-top: 5px solid #969696;
+}
+
+.infoSection table tr td {
+    border-bottom: 1px solid #969696;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modalContent {
+    background-color: #E8F5FF;
+    margin: 120px auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 960px;
+    position: relative;
+}
+
+.close {
+    color: #c8c8c8;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    display: inline;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.roadviewBtn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 2;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.roadviewBtn img {
+    width: 24px;
+    height: 24px;
+}
+
+.roadviewBtn:hover {
+    background-color: #e65c54;
+}
+
+.zoomControl {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.zoomBtn {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.zoomBtn:hover {
+    background-color: #e6e6e6;
+}
+
+.zoomBtn:active {
+    background-color: #ccc;
+}

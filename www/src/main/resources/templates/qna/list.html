@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" th:href="@{/dist/css/qnalist.css}">
+
+<th:block th:replace="~{layout::setFragment(~{this::content})}">
+
+    <th:block th:fragment="content" >
+
+
+
+
+        <div class="qna-container ">
+            <div class="row">
+                <div class="col">
+
+                    <div class="qna-title">
+                        <h2 id="qnah">Q & A</h2>
+                        <div class="qna-title-img">
+
+                        </div>
+                        <p id="qna-ko">질문과 답변</p>
+                    </div> <!-- qna-title -->
+
+                    <div class="qna-table-box">
+
+
+                        <!-- 검색라인 -->
+                        <form action="/qna/list" >
+                            <div class="qna-search-div container-md" style=" text-align :center;
+  margin-top : 30px;  border-radious:0; " role="search">
+                                <select  name="type" aria-label="Small select example" class="qna-list-select">
+                                    <option th:selected="${ph.pgvo.type==null? true:false}">선택</option>
+                                    <option th:value="t" th:selected="${ph.pgvo.type=='t'? true:false}">제목</option>
+                                    <option th:value="w" th:selected="${ph.pgvo.type=='w'? true:false}">작성자</option>
+                                    <option th:value="c" th:selected="${ph.pgvo.type=='c'? true:false}">게시글</option>
+                                    <option th:value="tc" th:selected="${ph.pgvo.type=='tc'? true:false}">제목&게시글</option>
+                                    <option th:value="wc" th:selected="${ph.pgvo.type=='wc'? true:false}">작성자&게시글</option>
+                                    <option th:value="tw" th:selected="${ph.pgvo.type=='tw'? true:false}">제목&작성자</option>
+                                    <option th:value="twc" th:selected="${ph.pgvo.type=='twc'? true: false}">all</option>
+                                </select>
+                                <input type="text" class="qna-search-input" placeholder="Search..." name="keyword" th:value="${ph.pgvo.keyword}" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="hidden" name="pageNo" th:value="1">
+                                <input type="hidden" name="qty" th:value="${ph.pgvo.qty}">
+                                <button type="submit" class="qna-search-btn">
+                                    Search
+                                    <span th:text="${ph.totalCount}" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+  <span class="visually-hidden">unread messages</span>
+</span>
+                                </button>
+
+                            </div>
+                        </form>
+                        <div class="qna-register-Btn-Box">
+                            <form action="/qna/register" >
+
+                                <button type="submit" id="qna-write">문의글 작성</button>
+                            </form>
+
+                        </div>
+
+                        <table class='qna-list'>
+                            <thead style="width : 1200px">
+                            <tr>
+                                <th width=7% scope='col' class='dis_title'></th>
+                                <th width=15% class="dis_title">제목</th>
+                                <th width=12% scope='col' class='dis_title'>작성자</th>
+                                <th width=12% scope='col' class='dis_title'>작성일</th>
+                                <th width=6% scope='col' class='dis_title'>답변 상태</th>
+                                <th width=5% scope='col' class='dis_title'>조회수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- 동적으로 생성되는 내용 -->
+                            <tr th:each="qvo:${list}">
+                                <!-- <td class='dis_none bno' style="color: red;">[[${qvo.bno}]]</td>-->
+                                <td class='dis_none' style="color: red;">
+                                    <span th:if="${qvo.isNotice == 'true' }" >공지사항</span>
+
+                                    <span th:unless="${qvo.isNotice == 'true'}" th:text="${qvo.bno}"
+                                          style="color: white;"></span>
+                                </td>
+
+                                <td class='dis_none'>
+
+                                    <a th:if="${qvo.isSecret == 'true'}"
+                                       style="color: white; text-decoration: none;"
+                                       href="#" th:attr="data-bno=${qvo.bno}" onclick="showModal(this.getAttribute('data-bno')); return false;">
+                                        [[${qvo.title}]]
+                                        <span class="image-container">
+            <img th:id="'lockIcon' + ${qvo.bno}" style="width: 25px; height: 25px; cursor: pointer;"
+                 src="../dist/image/rock.png">
+        </span>
+                                    </a>
+
+
+                                    <!-- isSecret이 false인 경우 디테일 페이지로 바로 이동하는 링크 -->
+
+                                    <!--비밀글이 아닐떄 하얀글씨-->
+                                    <a th:if="${qvo.isSecret != 'true' }"  th:href="@{/qna/detail(bno=${qvo.bno})}"
+                                       style="color: WHITE; text-decoration: none;">
+                                        [[${qvo.title}]]
+                                    </a>
+
+
+                                </td>
+                                <td class='dis_none'>[[${qvo.writer}]]</td>
+                                <td class='dis_none'>[[${qvo.regDate}]]</td>
+                                <!-- isNotice가 true인 경우 cmtQty를 빈 열로 출력 -->
+                                <td class='dis_none' th:if="${qvo.isNotice == 'true'}"></td>
+
+                                <!-- isNotice가 false인 경우에만 cmtQty 열을 표시 -->
+                                <td class='dis_none' th:unless="${qvo.isNotice == 'true'}"
+                                    th:text="${qvo.cmtQty > 0 ? '답변 완료' : '답변 미완료'}"
+                                    th:classappend="${qvo.cmtQty > 0 ? 'completed' : 'uncompleted'}"></td>
+
+                                <td class='dis_none'>[[${qvo.readCount}]]</td>
+
+                            </tr>
+                            </tbody>
+
+                        </table> <!-- qna-list -->
+
+                        <!-- 모달 내부 -->
+                        <div id="passwordModal" class="modal" tabindex="-1">
+                            <!-- 모달 내용 -->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="color:black;">비밀번호 입력</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="password" id="passwordInput" class="form-control" placeholder="비밀번호 입력">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                        <button type="button" class="btn btn-primary" onclick="validatePassword()">확인</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!--페이지네이션 라인 -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li th:if="${ph.prev}"  class="page-item">
+                                    <a class="page-link" th:href="@{/qna/list(pageNo=${ph.startPage-1},qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <!--th:classappend: 동적 클래스 추가-->
+
+                                <th:block th:each="i:${#numbers.sequence(ph.startPage,ph.endPage)} ">
+
+                                    <li class="page-item" th:classappend="${ph.pgvo.pageNo == i ?'active':''}" aria-current="page">
+                                        <a class="page-link" style="color:black; background-color:white;" th:href="@{/qna/list(pageNo=${i},qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}">[[${i}]]</a>
+                                    </li>
+                                </th:block>
+
+                                <li th:if="${ph.next}" class="page-item">
+                                    <a class="page-link"  th:href="@{/qna/list(pageNo=${ph.endPage+1}
+                                    ,qty=${ph.pgvo.qty},type=${ph.pgvo.type},keyword=${ph.pgvo.keyword})}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                </div> <!-- qna-table-box -->
+            </div> <!-- col -->
+        </div> <!-- row -->
+
+
+
+        <!-- 스크립트 -->
+        <script>
+            // 모달 띄우기
+            function showModal(bno) {
+                var myModal = new bootstrap.Modal(document.getElementById('passwordModal'), {
+                    keyboard: false
+                });
+                document.getElementById('passwordInput').value = ''; // 모달을 띄울 때마다 비밀번호 입력 필드를 초기화합니다.
+                document.getElementById('passwordInput').setAttribute('data-bno', bno); // 모달에 bno 데이터 속성을 추가합니다.
+                myModal.show();
+            }
+
+    function validatePassword() {
+        var passwordInput = document.getElementById('passwordInput').value; // 모달에서 입력한 비밀번호 가져오기
+        var bno = document.getElementById('passwordInput').getAttribute('data-bno'); // 게시물 번호 가져오기
+
+        // 비밀번호를 서버로 전달하여 유효성 검사
+        $.ajax({
+            type: "POST",
+            url: "/qna/validatePassword",
+            data: {
+                bno: bno,
+                password: passwordInput
+            },
+            success: function (response) {
+                // 서버로부터의 응답에 따라 처리
+                if (response === "true" ) {
+
+                    alert("비밀번호가 확인되었습니다.");
+                    window.location.href = "/qna/detail?bno=" + bno;
+                } else {
+                    // 비밀번호가 유효하지 않은 경우
+                    alert("비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
+                    var passwordModal = bootstrap.Modal.getInstance(document.getElementById('passwordModal'));
+                    passwordModal.hide();
+                }
+            },
+            error: function (xhr, status, error) {
+                // 에러 처리
+                console.error("Error: " + error);
+            }
+        });
+    }
+
+
+
+        </script>
+        <script th:src="@{/dist/js/QnaList.js}"></script>
+    </th:block>
+</th:block>
+</html>
+
+
+
+
+
+
